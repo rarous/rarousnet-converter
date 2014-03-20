@@ -45,7 +45,7 @@
    :url (zf/xml1-> article :url zf/text)
    :category (zf/xml1-> article :category zf/text)
    :keywords (zf/xml1-> article :keywords zf/text)
-   :is-published (boolean (read-string (zf/xml1-> article :is-published zf/text)))
+   :is-published (= 1 (read-string (zf/xml1-> article :is-published zf/text)))
    :edited (from-string (zf/xml1-> article :edited zf/text))
    :tags (tags->vector article)})
 
