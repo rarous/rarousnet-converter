@@ -13832,7 +13832,7 @@ v intellisense obsah dokumentace ze stejného souboru.&lt;/p&gt;
 
 &lt;p&gt;Jak tedy takové komentáře vypadají? Následovně:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;function add(node) {
+&lt;pre&gt;&lt;code class="language-javascript"&gt;function add(node) {
   /// &amp;lt;summary&amp;gt;Přidá uzel do stromu.&amp;lt;/summary&amp;gt;
   /// &amp;lt;param name="node" type="TreeNode"&amp;gt;Uzel.&amp;lt;/param&amp;gt;
 }&lt;/code&gt;&lt;/pre&gt;
@@ -13857,7 +13857,7 @@ na další scripty, jejichž kód využíváme (tradičně JS frameworky), nebo
 dokonce i na &lt;code&gt;ScriptService&lt;/code&gt; v projektu. Užití může být
 následující:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;/// &amp;lt;reference path="mootools.js" /&amp;gt;
+&lt;pre&gt;&lt;code class="language-javascript"&gt;/// &amp;lt;reference path="mootools.js" /&amp;gt;
 /// &amp;lt;reference path="/services/ajax.svc" /&amp;gt;&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Tento kód napíšeme na začátku souboru a studio už bude vědět. Občas
@@ -13914,7 +13914,7 @@ Aby byla intellisense živena kvalitním obsahem, přichází nové studio s dok
 
 Jak tedy takové komentáře vypadají? Následovně:
 
-/--code
+/--code javascript
 function add(node) {
   /// &lt;summary&gt;Přidá uzel do stromu.&lt;/summary&gt;
   /// &lt;param name="node" type="TreeNode"&gt;Uzel.&lt;/param&gt;
@@ -13935,7 +13935,7 @@ Reference na scripty
 
 Pokud píšete něco většího, neobejdete se bez extrahování scriptů do samostatných souborů. V tom případě, ale intellisense neví, co je v ostatních souborech, a moc nám  toho neukáže. Naštěstí je tu pseudodokumentační tag `reference` pomocí něhož se jde odkazovat na další scripty, jejichž kód využíváme (tradičně JS frameworky), nebo dokonce i na `ScriptService` v projektu. Užití může být následující:
 
-/--code
+/--code javascript
 /// &lt;reference path="mootools.js" /&gt;
 /// &lt;reference path="/services/ajax.svc" /&gt;
 \--code
@@ -15228,7 +15228,7 @@ začínající na znak dolaru, např. &lt;code&gt;$firemni-modra&lt;/code&gt; n�
 dvojtečka a přiřazená hodnota. Deklaraci uzavírá středník. V praxi to
 může vypadat třeba následovně:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;/* definice proměnných */
+&lt;pre&gt;&lt;code class="language-css"&gt;/* definice proměnných */
 @var $firemni-modra: #2465B7;
 @var $firemni-zelena: #A0B424;
 
@@ -15247,7 +15247,7 @@ se ignoruje následující blok uzavřený ve složených závorkách.&lt;/p&gt;
 se definují pomocí zavináčového pravidla &lt;code&gt;@if&lt;/code&gt; následovaného
 symbolem a blokem s definicemi:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;@if IE6 {
+&lt;pre&gt;&lt;code class="language-css"&gt;@if IE6 {
 /* pravidla pouze pro IE6 */
 }
 
@@ -15275,7 +15275,7 @@ Proměnné
 
 Prvním vylepšením CSSX jsou proměnné, které se definují na začátku dokumentu (kvůli lepší přehlednosti). Deklarace proměnné začíná zavináčovým pravidlem `@var` následuje název proměnné začínající na znak dolaru, např. `$firemni-modra` následuje dvojtečka a přiřazená hodnota. Deklaraci uzavírá středník. V praxi to může vypadat třeba následovně:
 
-/--code
+/--code css
 /* definice proměnných */
 @var $firemni-modra: #2465B7;
 @var $firemni-zelena: #A0B424;
@@ -15293,7 +15293,7 @@ Podmínky
 
 Podmínky slouží k definování podmíněného bloku pravidel. Podmínky se definují pomocí zavináčového pravidla `@if` následovaného symbolem a blokem s definicemi:
 
-/--code
+/--code css
 @if IE6 {
 /* pravidla pouze pro IE6 */
 }
@@ -16743,7 +16743,7 @@ Using pattern usnadňuje čtení takovéhoto kódu a hned je jasná i logická s
 
 Další ukázka pochází z ASP.NET MVC frameworku, kde se using pattern používá v HTML helperu pro generování formuláře.
 
-/--code
+/--code xml
 &lt;% using(Html.Form&lt;HomeController&gt;(action =&gt; action.Index())) { %&gt;
 ...
 &lt;% } %&gt;
@@ -19808,7 +19808,7 @@ přímočarost syntaxe.&lt;/p&gt;
 komponent. :)&lt;/p&gt;
 
 &lt;pre
-class="boo"&gt;&lt;code&gt;component 'my_component', IServiceContract, ServiceImplementation:
+&gt;&lt;code class="language-boo"&gt;component 'my_component', IServiceContract, ServiceImplementation:
     # nastavime parametr konstruktoru
     constructorParameter = 10
     # nastavime vlastnost sluzby
@@ -19824,7 +19824,7 @@ pokračuje výčet nastavovaných vlastností a parametrů. Můžeme takto
 nastavovat i speciální vlastnost ovlivňující životnost objektu.&lt;/p&gt;
 
 &lt;pre
-class="boo"&gt;&lt;code&gt;component HttpRequest:
+&gt;&lt;code class="language-boo"&gt;component HttpRequest:
     lifestyle Singleton&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Všimněte si, že se ani nemusí při registraci uvádět referenční
@@ -19834,7 +19834,7 @@ ukázky jsou fešné, ale nic, co bychom nezvládli pomocí XML. Pojďme
 trochu dál.&lt;/p&gt;
 
 &lt;pre
-class="boo"&gt;&lt;code&gt;for type in AllTypesBased of Controller("MyApplication.Web"):
+&gt;&lt;code class="language-boo"&gt;for type in AllTypesBased of Controller("MyApplication.Web"):
     component type&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Tento kód zaregistruje všechny controllery (třídy, které jsou potomky
@@ -19850,7 +19850,7 @@ kontejneru nové možnosti a zapouzdřují větší sady komponent do logických
 jednotek. Pro ukázku konfigurace ActiveRecord komponent pomocí Binsoru:&lt;/p&gt;
 
 &lt;pre
-class="boo"&gt;&lt;code&gt;facility ActiveRecordFacility:
+&gt;&lt;code class="language-boo"&gt;facility ActiveRecordFacility:
     configuration:
         @isWeb = true, isDebug = true
         assemblies = [ Assembly.Load("MyApplication.Entities") ]
@@ -20440,13 +20440,13 @@ title="Unified Resource Locator"&gt;URL&lt;/acronym&gt;. Bohužel, to nefungoval
 protože &lt;code&gt;__deffered&lt;/code&gt; je metodou POST ignorováno. Kód vypadal asi
 následujícně:&lt;/p&gt;
 
-&lt;pre class="boo"&gt;&lt;code&gt;User: { __deffered: { uri: "/Users(13)" } }&lt;/code&gt;&lt;/pre&gt;
+&lt;pre &gt;&lt;code class="language-javascript"&gt;User: { __deffered: { uri: "/Users(13)" } }&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Pak jsem tedy zkusil druhý zoufalý krok. Zkusil jsem použít atribut ID,
 který je vlastně jediný důležitý pro správné persistování do
 databáze. Kód následující:&lt;/p&gt;
 
-&lt;pre class="boo"&gt;&lt;code&gt;User: { Id: 13 }&lt;/code&gt;&lt;/pre&gt;
+&lt;pre &gt;&lt;code class="language-javascript"&gt;User: { Id: 13 }&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Jenže ani to není správná cesta, navíc si tak můžete Usera
 poškodit.&lt;/p&gt;
@@ -20459,7 +20459,7 @@ dokumentace mi otevřelo oči. Vlastnost &lt;code&gt;__metadata&lt;/code&gt; byl
 tou správkou, která se měla použít! Takže správný kód
 vypadá takto:&lt;/p&gt;
 
-&lt;pre class="boo"&gt;&lt;code&gt;User: { __metadata: { uri: "/Users(13)" } }&lt;/code&gt;&lt;/pre&gt;
+&lt;pre &gt;&lt;code class="language-javascript"&gt;User: { __metadata: { uri: "/Users(13)" } }&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id="toc-zaver"&gt;Závěr&lt;/h3&gt;
 
@@ -20508,13 +20508,13 @@ Cesta k řešení
 
 Nejprve jsem zkoušel využít něco podobného, jako je u entit, které jsou vráceny pomocí metody GET. Tedy odkaz na jinou entitu je vyjádřen pomocí vlastnosi `__deffered` a ta má atribut `uri`, který odkazuje na již existující entitu pomocí jejího URL((Unified Resource Locator)). Bohužel, to nefungovalo, protože `__deffered` je metodou POST ignorováno. Kód vypadal asi následujícně:
 
-/--code boo
+/--code javascript
 User: { __deffered: { uri: "/Users(13)" } }
 \--code
 
 Pak jsem tedy zkusil druhý zoufalý krok. Zkusil jsem použít atribut ID, který je vlastně jediný důležitý pro správné persistování do databáze. Kód následující:
 
-/--code boo
+/--code javascript
 User: { Id: 13 }
 \--code
 
@@ -20525,7 +20525,7 @@ Konečné řešení
 
 Konečné funkční řešení se od toho původního pokusu skoro neliší, ano byl jsem hodně blízko a vzal to oklikou a až důkladné čtení dokumentace mi otevřelo oči. Vlastnost `__metadata` byla aktuálně tou správkou, která se měla použít! Takže správný kód vypadá takto:
 
-/--code boo
+/--code javascript
 User: { __metadata: { uri: "/Users(13)" } }
 \--code
 
@@ -22958,7 +22958,7 @@ Action&lt;/code&gt; na &lt;strong&gt;Content&lt;/strong&gt;, aby se nám pěkně
 publikování projektu. Do konfiguráku zadejte následující řádky:&lt;/p&gt;
 
 &lt;pre
-class="boo"&gt;&lt;code&gt;import System.Web.Mvc from System.Web.Mvc
+&gt;&lt;code class="language-boo"&gt;import System.Web.Mvc from System.Web.Mvc
 
 for controller in AllTypesBased of Controller("&amp;lt;nazev assembly MVC projektu&amp;gt;"):
   component controller.Name.ToLower(), controller:
@@ -23470,7 +23470,7 @@ kontejneru, přidáním následujících řádků do souboru
 &lt;code&gt;Windsor.boo&lt;/code&gt;:&lt;/p&gt;
 
 &lt;pre
-class="boo"&gt;&lt;code&gt;for binder in AllTypesBased of IModelBinder("&amp;lt;nazev assembly s Model Bindery&amp;gt;"):
+&gt;&lt;code class="language-boo"&gt;for binder in AllTypesBased of IModelBinder("&amp;lt;nazev assembly s Model Bindery&amp;gt;"):
   component binder.Name.ToLower(), IModelBinder, binder&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Máme je zaregistrované v kontejneru, ale potřeby psát něco do
@@ -23514,7 +23514,7 @@ někdy jindy… Takže vraťme se zase k &lt;code&gt;Windsor.boo&lt;/code&gt; a 
 konec přidejme následující řádky:&lt;/p&gt;
 
 &lt;pre
-class="boo"&gt;&lt;code&gt;for modelBinder as duck in IoC.Container.ResolveAll of IModelBinder():
+&gt;&lt;code class="language-boo"&gt;for modelBinder as duck in IoC.Container.ResolveAll of IModelBinder():
   ModelBinders.Binders[modelBinder.ModelType] = modelBinder&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Upozorňuji, že tyto řádky &lt;strong&gt;musí být až na konci&lt;/strong&gt;
@@ -23790,7 +23790,7 @@ a to za pomocí Boo.&lt;/p&gt;
 je už nastíněno výše. První můj návrh vypadal asi takto:&lt;/p&gt;
 
 &lt;pre
-class="boo"&gt;&lt;code&gt;ignore:
+&gt;&lt;code class="language-boo"&gt;ignore:
   route "{resource}.axd/{*pathInfo}"
 
 map:
@@ -23807,7 +23807,7 @@ být jasné, jestli zrovna jsme v bloku &lt;code&gt;ignore&lt;/code&gt; nebo
 zvolil následující variantu:&lt;/p&gt;
 
 &lt;pre
-class="boo"&gt;&lt;code&gt;ignore_route "{resource}.axd/{*pathInfo}"
+&gt;&lt;code class="language-boo"&gt;ignore_route "{resource}.axd/{*pathInfo}"
 
 map_route "Default", "{controller}/{action}/{id}":
   defaults:
@@ -23844,7 +23844,7 @@ v jazyce.&lt;/p&gt;
 &lt;p&gt;Začneme jednodušším makrem pro ignorování routy:&lt;/p&gt;
 
 &lt;pre
-class="boo"&gt;&lt;code&gt;import Boo.Lang.Extensions
+&gt;&lt;code class="language-boo"&gt;import Boo.Lang.Extensions
 import Boo.Lang.Compiler
 import Boo.Lang.Compiler.Ast
 import Boo.Lang.Compiler.Ast.Visitors
@@ -23883,7 +23883,7 @@ jsou vypsané výchozí hodnoty parametrů routy, a &lt;code&gt;constraints&lt;/
 kde jsou podmínky, které tyto parametry musejí splňovat.&lt;/p&gt;
 
 &lt;pre
-class="boo"&gt;&lt;code&gt;macro map_route:
+&gt;&lt;code class="language-boo"&gt;macro map_route:
   name, path = map_route.Arguments
   defaults = map_route["defaults"] as MacroStatement or MacroStatement()
   constraints = map_route["constraints"] as MacroStatement or MacroStatement()
@@ -23946,7 +23946,7 @@ může to být cokoli (&lt;code&gt;object&lt;/code&gt;). Takže tam i cokoli po
 začátek souboru &lt;code&gt;Windsor.boo&lt;/code&gt; přidáme řádky:&lt;/p&gt;
 
 &lt;pre
-class="boo"&gt;&lt;code&gt;import file from RoutingMacros.boo
+&gt;&lt;code class="language-boo"&gt;import file from RoutingMacros.boo
 import System.Web.Routing
 import System.Web.Mvc&lt;/code&gt;&lt;/pre&gt;
 
@@ -24302,7 +24302,7 @@ názvů našich rout.&lt;/p&gt;
 &lt;p&gt;A nyní přejdeme k definování routovací tabulky.&lt;/p&gt;
 
 &lt;pre
-class="boo"&gt;&lt;code&gt;import file from RoutingMacros.boo
+&gt;&lt;code class="language-boo"&gt;import file from RoutingMacros.boo
 
 import System.Web.Routing
 import System.Web.Mvc
@@ -24648,7 +24648,7 @@ V nové verzi jsem přidal sekci &lt;code&gt;constraints&lt;/code&gt; k makru
 funkční kód:&lt;/p&gt;
 
 &lt;pre
-class="boo"&gt;&lt;code&gt;import Boo.Lang.Extensions
+&gt;&lt;code class="language-boo"&gt;import Boo.Lang.Extensions
 import Boo.Lang.Compiler
 import Boo.Lang.Compiler.Ast
 import Boo.Lang.Compiler.Ast.Visitors
@@ -25113,8 +25113,7 @@ brzy. :)&lt;/p&gt;
 celkem obskurně, ale má přísnou logiku a zachovává čistou strukturu
 pohledu.&lt;/p&gt;
 
-&lt;pre
-class="haml"&gt;&lt;code&gt;%html{:xmlns =&amp;gt; 'http://www.w3.org/1999/xhtml'}
+&lt;pre&gt;&lt;code class="language-haml"&gt;%html{:xmlns =&amp;gt; 'http://www.w3.org/1999/xhtml'}
   %head
     %title Test view page
   %body
@@ -25631,7 +25630,7 @@ zaregistrujeme v souboru &lt;code&gt;Windsor.boo&lt;/code&gt; facility pro inte
 ActiveRecordu do IoC kontejneru:&lt;/p&gt;
 
 &lt;pre
-class="boo"&gt;&lt;code&gt;import System.Reflection
+&gt;&lt;code class="language-boo"&gt;import System.Reflection
 
 // podpora ActiveRecord v kontejneru
 facility ActiveRecordFacility:
@@ -25661,7 +25660,7 @@ jako jedna transakce. Takže integrace frameworku, je hotová. Teď ještě
 přidáme automatickou registraci samotných repositoří.&lt;/p&gt;
 
 &lt;pre
-class="boo"&gt;&lt;code&gt;for repository in AllTypesBased of IRepository("MyApplication.Entities"):
+&gt;&lt;code class="language-boo"&gt;for repository in AllTypesBased of IRepository("MyApplication.Entities"):
   component repository.Name.ToLower(), repository.GetInterfaces()[0], repository:
     lifestyle PerWebRequest&lt;/code&gt;&lt;/pre&gt;
 
@@ -25673,7 +25672,7 @@ vytvořit pro ně kontrakt, který obsahuje kontrakt generické repository.
 Například takto:&lt;/p&gt;
 
 &lt;pre
-class="boo"&gt;&lt;code&gt;public interface IUsersRepository : IRepository&amp;lt;User&amp;gt; {
+&gt;&lt;code class="language-boo"&gt;public interface IUsersRepository : IRepository&amp;lt;User&amp;gt; {
   User FindUserByEmail(string email);
 }&lt;/code&gt;&lt;/pre&gt;
 
@@ -25689,7 +25688,7 @@ Takže si vytvoříme funkci, která splňuje kontrakt delegáta, a následně
 ji hned využijeme pro registraci:&lt;/p&gt;
 
 &lt;pre
-class="boo"&gt;&lt;code&gt;def contains_name(t as Type, o as Object):
+&gt;&lt;code class="language-boo"&gt;def contains_name(t as Type, o as Object):
   return t.Name.Contains(o.ToString())
 
 for repository in AllTypesBased of IRepository("MyApplication.Entities"):
@@ -26662,8 +26661,7 @@ tedy odlišit pět úrovní popularity.&lt;/p&gt;
 &lt;p&gt;To bychom měli HTML kód, teď ještě nastylovat, aby z toho opravdu
 cloud byl:&lt;/p&gt;
 
-&lt;pre
-class="css"&gt;&lt;code&gt;.hTagCloud {text-align:center}
+&lt;pre&gt;&lt;code class="language-css"&gt;.hTagCloud {text-align:center}
 .hTagCloud ul{list-style-type:none;padding:0;margin:0}
 .hTagCloud li{display:inline;font:.6875em sans-serif;margin:0;padding:0}
 .hTagCloud .v-popular{font-size:1.273em}
@@ -26910,7 +26908,7 @@ ukázkách výpisu &lt;strong&gt;Hello World&lt;/strong&gt; na konzolu:&lt;/p&gt
 &lt;p&gt;Začal jsem nejjednodušším programem v C#, který vypíše na konzolu
 &lt;code&gt;Hello World&lt;/code&gt;. Teď to samé v Boo:&lt;/p&gt;
 
-&lt;pre class="boo"&gt;&lt;code&gt;print 'Hello World'&lt;/code&gt;&lt;/pre&gt;
+&lt;pre &gt;&lt;code class="language-boo"&gt;print 'Hello World'&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Ano, to je vše.&lt;/p&gt;
 
@@ -26947,7 +26945,7 @@ máme k dispozici celý typový systém dotnetu.&lt;/p&gt;
 &lt;p&gt;A už začíná deklarovat jednu proměnnou za druhou.&lt;/p&gt;
 
 &lt;pre
-class="boo"&gt;&lt;code&gt;celeCislo as int  //definice, aktuální hodnota 0
+&gt;&lt;code class="language-boo"&gt;celeCislo as int  //definice, aktuální hodnota 0
 celeCislo = 200  //inicializace proměnné
 celeCislo as int = 5&lt;/code&gt;&lt;/pre&gt;
 
@@ -26955,7 +26953,7 @@ celeCislo as int = 5&lt;/code&gt;&lt;/pre&gt;
 další ukázky:&lt;/p&gt;
 
 &lt;pre
-class="boo"&gt;&lt;code&gt;//příklad cyklu while
+&gt;&lt;code class="language-boo"&gt;//příklad cyklu while
 import System
 i as int
 while(i &amp;lt; 5):
@@ -26969,14 +26967,14 @@ spoléhá se na implicitní inicializaci hodnotové proměnné, navíc zanáší
 s proměnnými:&lt;/p&gt;
 
 &lt;pre
-class="boo"&gt;&lt;code&gt;integer = 5
+&gt;&lt;code class="language-boo"&gt;integer = 5
 realNumber = 5.0
 text = 'some text'&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Jednoduše přiřadíme hodnotu a kompilátor už ví jakého je typu – a
 není to &lt;code&gt;object&lt;/code&gt; ani &lt;code&gt;variant&lt;/code&gt;. ;)&lt;/p&gt;
 
-&lt;pre class="boo"&gt;&lt;code&gt;i = 0
+&lt;pre &gt;&lt;code class="language-boo"&gt;i = 0
 
 while i &amp;lt; 5:
   print i++&lt;/code&gt;&lt;/pre&gt;
@@ -28581,7 +28579,7 @@ nastavení výchozí hodnoty, pokud přišlo &lt;code&gt;null&lt;/code&gt;. Nejh
 případ:&lt;/p&gt;
 
 &lt;pre
-&gt;&lt;code class="language-php"&gt;function example(options) {
+&gt;&lt;code class="language-javascript"&gt;function example(options) {
   if (options == null) {
     this.options = { color: 'red' };
   }
@@ -28594,7 +28592,7 @@ případ:&lt;/p&gt;
 operátor:&lt;/p&gt;
 
 &lt;pre
-&gt;&lt;code class="language-php"&gt;function example(options) {
+&gt;&lt;code class="language-javascript"&gt;function example(options) {
   this.options = (options != null) ? options : { color: 'red' };
 }&lt;/code&gt;&lt;/pre&gt;
 
@@ -28602,7 +28600,7 @@ operátor:&lt;/p&gt;
 logický zápis:&lt;/p&gt;
 
 &lt;pre
-&gt;&lt;code class="language-php"&gt;function example(options) {
+&gt;&lt;code class="language-javascript"&gt;function example(options) {
   this.options = options || { color: 'red' };
 }&lt;/code&gt;&lt;/pre&gt;
 
@@ -28815,7 +28813,7 @@ Podmíněné přiřazení
 
 Jednou z typických ukázek může být validace vstupních parametrů a nastavení výchozí hodnoty, pokud přišlo `null`. Nejhorší případ:
 
-/--code php
+/--code javascript
 function example(options) {
   if (options == null) {
     this.options = { color: 'red' };
@@ -28828,7 +28826,7 @@ function example(options) {
 
 O něco chytřejší programátor použije ternární podmíněný operátor:
 
-/--code php
+/--code javascript
 function example(options) {
   this.options = (options != null) ? options : { color: 'red' };
 }
@@ -28836,7 +28834,7 @@ function example(options) {
 
 Vývojář znalý JavaScriptu však odbourá zbytečné ruchy a vznikne logický zápis:
 
-/--code php
+/--code javascript
 function example(options) {
   this.options = options || { color: 'red' };
 }
@@ -31220,7 +31218,7 @@ Parsování mikroformátu provádím pomocí jQuery.&lt;/p&gt;
 trošku si jQuery osolím, aby se mi s ním a Rx pracovalo trochu líp:&lt;/p&gt;
 
 &lt;pre
-&gt;&lt;code class="language-php"&gt;jQuery.fn.toObservable = function (eventType, eventData) {
+&gt;&lt;code class="language-javascript"&gt;jQuery.fn.toObservable = function (eventType, eventData) {
   if (arguments.length == 0) {
     return Rx.Observable.FromArray(this.toArray());
   }
@@ -31240,7 +31238,7 @@ nalezené elementy, které musím zkrotit! Jak, kdy, proč? No tak, že mu
 to řeknu:&lt;/p&gt;
 
 &lt;pre
-&gt;&lt;code class="language-php"&gt;Rx.Observable.
+&gt;&lt;code class="language-javascript"&gt;Rx.Observable.
   Interval(10000).
   Select(function () {
     return $('.hentry .updated').toObservable();
@@ -31309,7 +31307,7 @@ Další soustředění budu směřovat na `span` se třídou **updated**, proto�
 
 Rx jsou psány tak, aby s jQuery mohly fungovat, ale já jsem mlsná huba a trošku si jQuery osolím, aby se mi s ním a Rx pracovalo trochu líp:
 
-/--code php
+/--code javascript
 jQuery.fn.toObservable = function (eventType, eventData) {
   if (arguments.length == 0) {
     return Rx.Observable.FromArray(this.toArray());
@@ -31322,7 +31320,7 @@ Pokud zavolám `toObservable` nad jQuery objektem bez parametrů, převede se v�
 
 Dále už se vrhnu rovnou do rozbouřené vody. jQuery na mne začne chrlit nalezené elementy, které musím zkrotit! Jak, kdy, proč? No tak, že mu to řeknu:
 
-/--code php
+/--code javascript
 Rx.Observable.
   Interval(10000).
   Select(function () {
@@ -31367,7 +31365,7 @@ asynchronní operace převádějí na neblokující lineární kód.&lt;/p&gt;
 včera. Ale použitá technika a principy zůstávají stejné:&lt;/p&gt;
 
 &lt;pre
-&gt;&lt;code class="language-php"&gt;Rx.Observable.
+&gt;&lt;code class="language-javascript"&gt;Rx.Observable.
   Interval(60000).
   Select(getFeedUpdates).
   Switch().
@@ -31397,7 +31395,7 @@ záznam, aby se nám feed na stránce nenatahoval. Takže jsme elegantně
 zvládli příjem nových příspěvků. A jak je vlastně načítáme?&lt;/p&gt;
 
 &lt;pre
-&gt;&lt;code class="language-php"&gt;function getLastActivityDate() {
+&gt;&lt;code class="language-javascript"&gt;function getLastActivityDate() {
   return $('.hfeed&amp;gt;.hentry .updated .value-title').first().attr('title');
 }
 
@@ -31454,7 +31452,7 @@ Asynchronní volání je z pohledu šetření zdroji výhodné, ovšem z hledisk
 
 Pojďme hned k dnešní ukázce, která bude o dost jednodušší než včera. Ale použitá technika a principy zůstávají stejné:
 
-/--code php
+/--code javascript
 Rx.Observable.
   Interval(60000).
   Select(getFeedUpdates).
@@ -31473,7 +31471,7 @@ Opět vytvářím `Observable` objekt, který něco vystřelí jednou za minutu.
 
 Nakonec se přihlásím k odběru těchto jednotlivých příspěvků pomocí operátoru `Subscribe`. Když mi nějaký příspěvek přilítne, tak ho vezmu a dám ho na začátek feedu a potom odeberu poslední záznam, aby se nám feed na stránce nenatahoval. Takže jsme elegantně zvládli příjem nových příspěvků. A jak je vlastně načítáme?
 
-/--code php
+/--code javascript
 function getLastActivityDate() {
   return $('.hfeed&gt;.hentry .updated .value-title').first().attr('title');
 }
@@ -32377,7 +32375,7 @@ donačítat scripty pro featury na dané stránce:&lt;/p&gt;
 &lt;p&gt;Jak vypadá takový bootstrapper? Následovně:&lt;/p&gt;
 
 &lt;pre
-&gt;&lt;code class="language-php"&gt;jQuery(function($) {
+&gt;&lt;code class="language-javascript"&gt;jQuery(function($) {
   initCalendar($);
 });
 
@@ -32421,7 +32419,7 @@ Je to celkem snadné. Místo jednoho velikého scriptu s jQuery, všemi pluginy 
 
 Jak vypadá takový bootstrapper? Následovně:
 
-/--code php
+/--code javascript
 jQuery(function($) {
   initCalendar($);
 });
@@ -35349,7 +35347,7 @@ vhodnějšího buildovacího DSL.&lt;/p&gt;
 zavolá a můžeme jet:&lt;/p&gt;
 
 &lt;pre
-&gt;&lt;code class="language-php"&gt;function Transform-Config {
+&gt;&lt;code class="language-powershell"&gt;function Transform-Config {
     param([string] $source, [string] $transform, [string] $destination = '')
     if (-not $destination) { $destination = $source; }
     Exec { MsBuild TransformHelper.build /p:Source=$source /p:Transform=$transform /p:Destination=$destination.tmp }
@@ -35367,7 +35365,7 @@ V aplikaci mám složku &lt;code&gt;Configurations&lt;/code&gt; kde jsou jednot
 transformace &lt;code&gt;web.instance.config&lt;/code&gt;, kde instance je proměnná. Pokud
 potřebuju rychle přepnout na jinou instance napíšu do konzoly:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;.\psake.ps1 TransformConfig –properties @{ instance = 'instance' }&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class="language-powershell"&gt;.\psake.ps1 TransformConfig –properties @{ instance = 'instance' }&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;A mám switchnuto. &lt;code&gt;TransformConfig&lt;/code&gt; je task v psake scriptu,
 který volá výše vytvořenou funkci. Při balíčkování se dá využít
@@ -35406,7 +35404,7 @@ Ovšem, psát build script v XML, je tak neproduktivní a nehodné 21. století.
 
 Pak už si jen připravíme pomocnou funkci, která nám tenhle scrtipt zavolá a můžeme jet:
 
-/--code php
+/--code powershell
 function Transform-Config {
     param([string] $source, [string] $transform, [string] $destination = '')
     if (-not $destination) { $destination = $source; }
@@ -35422,7 +35420,7 @@ Použití v praxi
 ===============
 Ve výsledku tohle používám pro transformace configu pro různé instance. V aplikaci mám složku `Configurations` kde jsou jednotlivé transformace `web.instance.config`, kde instance je proměnná. Pokud potřebuju rychle přepnout na jinou instance napíšu do konzoly:
 
-/--code
+/--code powershell
 .\psake.ps1 TransformConfig –properties @{ instance = 'instance' }
 \--code
 
@@ -36963,7 +36961,7 @@ seznam (v C# spíše než &lt;code&gt;LinkedList&amp;lt;T&amp;gt;&lt;/code&gt; 
 &lt;code&gt;Microsoft.Bcl.Immutable&lt;/code&gt;) a využijeme rekurze:&lt;/p&gt;
 
 &lt;pre
-&gt;&lt;code class="language-csharp"&gt;let rec add1 lst =
+&gt;&lt;code class="language-fsharp"&gt;let rec add1 lst =
     if List.isEmpty lst then []
     else (List.head lst) + 1 :: add1 (List.tail lst)
 
@@ -36981,7 +36979,7 @@ vrátíme prázdný seznam. Tím se nám rekurze ukončí.&lt;/p&gt;
 &lt;p&gt;Obdobně naimplementujeme i odčítání:&lt;/p&gt;
 
 &lt;pre
-&gt;&lt;code class="language-csharp"&gt;let rec sub1 lst =
+&gt;&lt;code class="language-fsharp"&gt;let rec sub1 lst =
     if List.isEmpty lst then []
     else (List.head lst) - 1 :: sub1 (List.tail lst)
 
@@ -37002,7 +37000,7 @@ neděláme nic jiného než mapování. A tak jde kód přepsat do
 jednodušší podoby:&lt;/p&gt;
 
 &lt;pre
-&gt;&lt;code class="language-csharp"&gt;let inc x = x + 1
+&gt;&lt;code class="language-fsharp"&gt;let inc x = x + 1
 let dec x = x - 1
 
 List.map inc [1; 2; 3]
@@ -37024,7 +37022,7 @@ přičtení/odečtení jedničky. Takže z našich funkcí vytvoříme funkci
 vyššího řádu:&lt;/p&gt;
 
 &lt;pre
-&gt;&lt;code class="language-csharp"&gt;let rec map f lst =
+&gt;&lt;code class="language-fsharp"&gt;let rec map f lst =
     if List.isEmpty lst then []
     else f(List.head lst)::map f (List.tail lst)
 
@@ -37044,7 +37042,7 @@ matching&lt;/em&gt; – volba výsledku na základě strukturální podobnosti.
 &lt;code&gt;map&lt;/code&gt; funkci můžeme hezky zjednodušit na:&lt;/p&gt;
 
 &lt;pre
-&gt;&lt;code class="language-csharp"&gt;let rec mapMatch f lst =
+&gt;&lt;code class="language-fsharp"&gt;let rec mapMatch f lst =
     match lst with
     | [] -&amp;gt; []
     | head::tail -&amp;gt; f head::mapMatch f tail
@@ -37069,7 +37067,7 @@ pole a sekvence). Zde byl použit operátor rozsahu &lt;code&gt;..&lt;/code&gt;.
 skutečnosti můžeme jít mnohem dál a aplikovat třeba rovnou
 i mapování:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class="language-csharp"&gt;[for x in 1 .. 3 -&amp;gt; x + 1]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class="language-fsharp"&gt;[for x in 1 .. 3 -&amp;gt; x + 1]&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Výsledek je stejný jako v předchozích příkladech. Kód je minimální.
 Myšlenka zřejmá.&lt;/p&gt;
@@ -37082,7 +37080,7 @@ pokusíme se zbavit podmínek, je filtrování kolekcí. Funkce
 predikát:&lt;/p&gt;
 
 &lt;pre
-&gt;&lt;code class="language-csharp"&gt;let even x = x % 2 = 0
+&gt;&lt;code class="language-fsharp"&gt;let even x = x % 2 = 0
 
 let rec filter p lst =
     if List.isEmpty lst then []
@@ -37104,7 +37102,7 @@ U prázdného seznamu ukončíme rekurzi.&lt;/p&gt;
 &lt;p&gt;S využitím pattern matchingu kód vypadá následovně:&lt;/p&gt;
 
 &lt;pre
-&gt;&lt;code class="language-csharp"&gt;let rec filterMatch p lst =
+&gt;&lt;code class="language-fsharp"&gt;let rec filterMatch p lst =
     match lst with
     | [] -&amp;gt; []
     | hd::tl when p hd -&amp;gt; hd::filterMatch p tl
@@ -37115,7 +37113,7 @@ filterMatch even [1 .. 10]&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Pěkné, že? A ještě ukázka s &lt;em&gt;list comprehension&lt;/em&gt;:&lt;/p&gt;
 
 &lt;pre
-&gt;&lt;code class="language-csharp"&gt;[for x in 1 .. 10 do if even x then yield x]&lt;/code&gt;&lt;/pre&gt;
+&gt;&lt;code class="language-fsharp"&gt;[for x in 1 .. 10 do if even x then yield x]&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Všimněte si, že zde se nám šipka &lt;code&gt;-&amp;gt;&lt;/code&gt; z ukázky pro
 mapování změnila na &lt;code&gt;do ... yield&lt;/code&gt;. Schválně si to zkuste, že
@@ -37129,7 +37127,7 @@ agregace. Ve funkcionálních jazycích se často můžeme potkat s funkcí
 &lt;code&gt;fold&lt;/code&gt; (v C# &lt;code&gt;Enumerable.Aggregate&lt;/code&gt;):&lt;/p&gt;
 
 &lt;pre
-&gt;&lt;code class="language-csharp"&gt;let rec foldr cons nil lst =
+&gt;&lt;code class="language-fsharp"&gt;let rec foldr cons nil lst =
     match lst with
     | [] -&amp;gt; nil
     | hd::tl -&amp;gt; cons hd (foldr cons nil tl)
@@ -37143,7 +37141,7 @@ foldr (+) 0 [1 .. 4]&lt;/code&gt;&lt;/pre&gt;
 kompilátorem:&lt;/p&gt;
 
 &lt;pre
-&gt;&lt;code class="language-csharp"&gt;let rec foldl cons nil lst =
+&gt;&lt;code class="language-fsharp"&gt;let rec foldl cons nil lst =
     match lst with
     | [] -&amp;gt; nil
     | hd::tl -&amp;gt; foldl cons (cons hd nil) tl
@@ -37157,7 +37155,7 @@ seznamy a vytvoří z nich jeden tvořený dvojicemi, podobně jako zip
 u vaší bundy.&lt;/p&gt;
 
 &lt;pre
-&gt;&lt;code class="language-csharp"&gt;let rec zip lst1 lst2 =
+&gt;&lt;code class="language-fsharp"&gt;let rec zip lst1 lst2 =
     match lst1, lst2 with
     | [], [] -&amp;gt; []
     | hd1::tl1, hd2::tl2 -&amp;gt; (hd1, hd2)::zip tl1 tl2
@@ -37181,7 +37179,7 @@ udělá dva seznamy prvků. A protože nám tato funkce vrací dva seznamy,
 začíná to být trochu tricky:&lt;/p&gt;
 
 &lt;pre
-&gt;&lt;code class="language-csharp"&gt;let rec unzip lst =
+&gt;&lt;code class="language-fsharp"&gt;let rec unzip lst =
     match lst with
     | [] -&amp;gt; ([], [])
     | (x, y)::tl -&amp;gt;
@@ -37203,7 +37201,7 @@ přiřazení? Co třeba za pomocí continuation? Nic vám to neříká? Co
 třeba callback? Ten už jistě znáte. :)&lt;/p&gt;
 
 &lt;pre
-&gt;&lt;code class="language-csharp"&gt;let rec unzipk k lst =
+&gt;&lt;code class="language-fsharp"&gt;let rec unzipk k lst =
     match lst with
     | [] -&amp;gt; k [] []
     | (x, y)::tl -&amp;gt; unzipk (fun xs ys -&amp;gt; k (x::xs) (y::ys)) tl
@@ -37220,7 +37218,7 @@ je mocná.&lt;/p&gt;
 Jeden s pozitivními výsledky a druhý s negativními:&lt;/p&gt;
 
 &lt;pre
-&gt;&lt;code class="language-csharp"&gt;let rec partition p lst =
+&gt;&lt;code class="language-fsharp"&gt;let rec partition p lst =
     match lst with
     | [] -&amp;gt; ([], [])
     | hd::tl -&amp;gt;
@@ -37235,7 +37233,7 @@ jeden prvek a rozhodujeme se, do kterého seznamu ho zařadíme. A opět
 můžeme implementaci udělat pomocí continuation:&lt;/p&gt;
 
 &lt;pre
-&gt;&lt;code class="language-csharp"&gt;let rec partitionk p k lst =
+&gt;&lt;code class="language-fsharp"&gt;let rec partitionk p k lst =
     match lst with
     | [] -&amp;gt; (k [] [])
     | hd::tl -&amp;gt; partitionk p (fun ins outs -&amp;gt;
@@ -37294,7 +37292,7 @@ Přičítání jedné
 
 Máme za úkol napsat funkci, která projde seznam čísel a přičte ke každému prvku jedničku. V implementaci použijeme datovou strukturu spojový seznam (v C# spíše než `LinkedList&lt;T&gt;` použijeme `ImmutableList&lt;T&gt;` z NuGet balíčku `Microsoft.Bcl.Immutable`) a využijeme rekurze:
 
-/--code csharp
+/--code fsharp
 let rec add1 lst =
     if List.isEmpty lst then []
     else (List.head lst) + 1 :: add1 (List.tail lst)
@@ -37309,7 +37307,7 @@ Odčítání jedné
 
 Obdobně naimplementujeme i odčítání:
 
-/--code csharp
+/--code fsharp
 let rec sub1 lst =
     if List.isEmpty lst then []
     else (List.head lst) - 1 :: sub1 (List.tail lst)
@@ -37326,7 +37324,7 @@ Knihovní funkce
 
 Další častou chybou je používání podmínek a ukecaného kódu vůbec. Navíc když se na obě funkce podíváme blíže, zjistíme, že to jsou v podstatě duplicity a jediné, co je odlišuje, je operace sčítání nebo odčítání. Když se oprostíme od implementačních detailů, zjistíme, že neděláme nic jiného než mapování. A tak jde kód přepsat do jednodušší podoby:
 
-/--code csharp
+/--code fsharp
 let inc x = x + 1
 let dec x = x - 1
 
@@ -37341,7 +37339,7 @@ High order function
 
 Jak bychom takovou funkci `map` naimplementovali? Zkusíme to pomocí jednoduché generalizace našich funkcí `add1` a `sub1`. Už jsme si říkali, že se liší jen v operaci přičtení/odečtení jedničky. Takže z našich funkcí vytvoříme funkci vyššího řádu:
 
-/--code csharp
+/--code fsharp
 let rec map f lst =
     if List.isEmpty lst then []
     else f(List.head lst)::map f (List.tail lst)
@@ -37356,7 +37354,7 @@ Pattern matching
 
 Další skvělou vlastností mnoha funkcionálních jazyků je *pattern matching* - volba výsledku na základě strukturální podobnosti. Naši `map` funkci můžeme hezky zjednodušit na:
 
-/--code csharp
+/--code fsharp
 let rec mapMatch f lst =
     match lst with
     | [] -&gt; []
@@ -37372,7 +37370,7 @@ List comprehension
 
 Možná jste si všimli, že jsem v ukázkách najednou přestal psát `[1; 2; 3;]` pro vytvoření seznamu tří čísel, ale přešel k zápisu `[1 .. 3]`. Funkcionální jazyky mívají pro kolekce větší pochopení a tak nezvládají jen tupé vyjmenování prvků, ale rozumí i složitějším konstrukcím pro vytvoření seznamu (platí i pro pole a sekvence). Zde byl použit operátor rozsahu `..`. Ve skutečnosti můžeme jít mnohem dál a aplikovat třeba rovnou i mapování:
 
-/--code csharp
+/--code fsharp
 [for x in 1 .. 3 -&gt; x + 1]
 \--code
 
@@ -37383,7 +37381,7 @@ Filtrování kolekcí
 
 Další možností, kde můžeme využít funkce vyššího řádu a pokusíme se zbavit podmínek, je filtrování kolekcí. Funkce `filter` vrací prvky ze vstupního pole, které splňují předaný predikát:
 
-/--code csharp
+/--code fsharp
 let even x = x % 2 = 0
 
 let rec filter p lst =
@@ -37398,7 +37396,7 @@ Nejprve jsme si definovali predikát pro sudá čísla, který budeme používat
 
 S využitím pattern matchingu kód vypadá následovně:
 
-/--code csharp
+/--code fsharp
 let rec filterMatch p lst =
     match lst with
     | [] -&gt; []
@@ -37410,7 +37408,7 @@ filterMatch even [1 .. 10]
 
 Pěkné, že? A ještě ukázka s *list comprehension*:
 
-/--code csharp
+/--code fsharp
 [for x in 1 .. 10 do if even x then yield x]
 \--code
 
@@ -37421,7 +37419,7 @@ Agregace kolekcí
 
 Další častou operací, kterou se seznamy můžeme dělat, je jejich agregace. Ve funkcionálních jazycích se často můžeme potkat s funkcí `fold` (v C# `Enumerable.Aggregate`):
 
-/--code csharp
+/--code fsharp
 let rec foldr cons nil lst =
     match lst with
     | [] -&gt; nil
@@ -37434,7 +37432,7 @@ Parametr `cons` je konstrukční funkce výsledku, `nil` reprezentuje prázdný 
 
 A ještě *tail recursive* varianta pro efektivnější zpracování kompilátorem:
 
-/--code csharp
+/--code fsharp
 let rec foldl cons nil lst =
     match lst with
     | [] -&gt; nil
@@ -37449,7 +37447,7 @@ Zipování
 
 Další velice důležitou funkcí je `zip`, která vezme dva seznamy a vytvoří z nich jeden tvořený dvojicemi, podobně jako zip u vaší bundy.
 
-/--code csharp
+/--code fsharp
 let rec zip lst1 lst2 =
     match lst1, lst2 with
     | [], [] -&gt; []
@@ -37467,7 +37465,7 @@ Rozepnutí
 
 Opakem zipování je `unzip`, která nám ze seznamu dvojic udělá dva seznamy prvků. A protože nám tato funkce vrací dva seznamy, začíná to být trochu tricky:
 
-/--code csharp
+/--code fsharp
 let rec unzip lst =
     match lst with
     | [] -&gt; ([], [])
@@ -37485,7 +37483,7 @@ Continuation
 
 Co bychom to byly za funkcionáře, kdybychom nechali takové imperativní přiřazování v naší jinak čisté implementaci? Jak se jen zbavit přiřazení? Co třeba za pomocí continuation? Nic vám to neříká? Co třeba callback? Ten už jistě znáte. :)
 
-/--code csharp
+/--code fsharp
 let rec unzipk k lst =
     match lst with
     | [] -&gt; k [] []
@@ -37501,7 +37499,7 @@ Partitioning
 
 Partitioning je něco jako filtrování, jen nám opět vrací dva seznamy. Jeden s pozitivními výsledky a druhý s negativními:
 
-/--code csharp
+/--code fsharp
 let rec partition p lst =
     match lst with
     | [] -&gt; ([], [])
@@ -37515,7 +37513,7 @@ partition even [1 .. 10]
 
 Implementace je dost podobná unzipování, jen teď máme na vstupu pouze jeden prvek a rozhodujeme se, do kterého seznamu ho zařadíme. A opět můžeme implementaci udělat pomocí continuation:
 
-/--code csharp
+/--code fsharp
 let rec partitionk p k lst =
     match lst with
     | [] -&gt; (k [] [])
@@ -37650,7 +37648,7 @@ net start Svc_$instance&lt;/code&gt;&lt;/pre&gt;
 vytvoření balíčku. Nyní už jen stačí balíček vygenerovat:&lt;/p&gt;
 
 &lt;pre
-&gt;&lt;code class="language-php"&gt;$source = "manifest=$manifest"
+&gt;&lt;code class="language-powershell"&gt;$source = "manifest=$manifest"
 $dest = "package=$pkgLocation"
 
 exec { msdeploy -verb:sync -source:$source -dest:$dest }&lt;/code&gt;&lt;/pre&gt;
@@ -37723,7 +37721,7 @@ Opět jsou generované scriptem pro konkrétní instance.
 
 Tím mám připravený manifest a všechno, co potřebuju pro úspěšné vytvoření balíčku. Nyní už jen stačí balíček vygenerovat:
 
-/--code php
+/--code powershell
 $source = "manifest=$manifest"
 $dest = "package=$pkgLocation"
 
@@ -37920,7 +37918,7 @@ konstrukt. C# nic takového nemá. Nebo jo?&lt;/p&gt;
 implementaci. Když se podíváme do dokumentace Scaly na malý příklad:&lt;/p&gt;
 
 &lt;pre
-&gt;&lt;code class="language-csharp"&gt;trait Similarity {
+&gt;&lt;code class="language-scala"&gt;trait Similarity {
   def isSimilar(x: Any): Boolean
   def isNotSimilar(x: Any): Boolean = !isSimilar(x)
 }&lt;/code&gt;&lt;/pre&gt;
@@ -37959,7 +37957,7 @@ Co je to trait?
 
 Trait je něco jako rozhraní. Umožňuje tedy vícenásobnou "dědičnost". Narozdíl od rozhraní, má však maximální možnou implementaci. Když se podíváme do dokumentace Scaly na malý příklad:
 
-/--code csharp
+/--code scala
 trait Similarity {
   def isSimilar(x: Any): Boolean
   def isNotSimilar(x: Any): Boolean = !isSimilar(x)
@@ -39404,7 +39402,7 @@ cinst nodejs.install
 
 Vytvořte si profil pro nuget konzoli `%UserProfile%\Documents\WindowsPowerShell\NuGet_profile.ps1` a do něj přidejte:
 
-/--code
+/--code powershell
 Set-Alias npm "C:\Program Files\nodejs\npm.cmd"
 Set-Alias bower "~\AppData\Roaming\npm\bower.cmd"
 \--code
