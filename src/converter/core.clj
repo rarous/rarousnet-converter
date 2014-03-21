@@ -34,21 +34,23 @@
           xml/parse-str
           zip/xml-zip))
 
+(defn urlize [s]
+  (str (remove-diacritics (replace (lower-case s) #"[\s|\.]" "-")) ".aspx"))
+
 (defn tags->vector [article]
   (let [tags (some-> (zf/xml1-> article :tags zf/text)
                      (clojure.string/replace "#x20;" "")
                      (clojure.string/split #"\s"))]
     (filterv #(not (clojure.string/blank? %))
              (or tags []))))
-
 (comment
   (defn article->map [article]
     {:id (read-string (zf/xml1-> article :id zf/text))
      :title (zf/xml1-> article :title zf/text)
      :description (zf/xml1-> article :description zf/text)
-     :html (clojure.string/trim (zf/xml1-> article :html
-                                           (fn [loc]
-                                             (apply str (zf/xml-> loc zd/descendants zip/node string?)))))
+     :html (zf/xml1-> article :html
+                      (fn [loc]
+                        (apply str (zf/xml-> loc zd/descendants zip/node string?))))
      ;:raw (zf/xml1-> article :raw zf/text)
      :author (zf/xml1-> article :author zf/text)
      :published (from-string (zf/xml1-> article :published zf/text))
@@ -69,6 +71,7 @@
          (filterv #(not= (:category %) "Reference"))
          (filterv #(not= (:category %) "Projekty"))
          (filterv :is-published)
+         (mapv #(conj % {:category-url (urlize (:category %))}))
          (map map->hash)
          (into {})
          )))
@@ -81,8 +84,6 @@
    :category (zf/xml1-> article :category zf/text)
    :is-published (= 1 (read-string (zf/xml1-> article :is-published zf/text)))})
 
-(defn urlize [s]
-  (str (remove-diacritics (replace (lower-case s) #"[\s|\.]" "-")) ".aspx"))
 
 (defn map->hash [article]
   (let [url (str (replace (lower-case (:category article)) #"[\s|\.]" "-") ".aspx")]
@@ -94,8 +95,8 @@
        (filterv #(not= (:category %) "Reference"))
        (filterv #(not= (:category %) "Projekty"))
        (filterv :is-published)
-       (mapv #(update-in % [:category] urlize))
-       (group-by :category)))
+       (mapv #(conj % {:category-url (keyword (urlize (:category %)))}))
+       (group-by :category-url)))
 
 (defn -main [& args]
-  (clojure.pprint/pprint result (io/writer "rubrics.edn")))
+  (clojure.pprint/pprint result (io/writer "categories.edn")))
