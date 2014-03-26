@@ -41,7 +41,6 @@
     (filterv #(not (clojure.string/blank? %))
              (or tags []))))
 
-(comment
   (defn article->map [article]
     {:id (read-string (zf/xml1-> article :id zf/text))
      :title (zf/xml1-> article :title zf/text)
@@ -70,9 +69,9 @@
          (filterv #(not= (:category %) "Projekty"))
          (filterv :is-published)
          (map map->hash)
-         (into {})
-         )))
+         (into {})))
 
+(comment
 (defn article->map [article]
   {:id (read-string (zf/xml1-> article :id zf/text))
    :title (zf/xml1-> article :title zf/text)
@@ -95,7 +94,7 @@
        (filterv #(not= (:category %) "Projekty"))
        (filterv :is-published)
        (mapv #(update-in % [:category] urlize))
-       (group-by :category)))
+       (group-by :category))))
 
 (defn -main [& args]
-  (clojure.pprint/pprint result (io/writer "rubrics.edn")))
+  (clojure.pprint/pprint result (io/writer "articles.edn")))
