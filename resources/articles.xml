@@ -40006,14 +40006,14 @@ A tady to začne chátrat. Taky se tomu taky říká "teorie rozbitého okna":[h
 
 &lt;p&gt;Tohle je má definice.&lt;/p&gt;
 
-&lt;h1 id=&quot;toc-definice&quot;&gt;Definice&lt;/h1&gt;
+&lt;h3 id=&quot;toc-definice&quot;&gt;Definice&lt;/h3&gt;
 
-&lt;p&gt;&lt;strong&gt;Mikroslužba&lt;/strong&gt; je &lt;strong&gt;diskrétní, izolovaný&lt;/strong&gt; a
+&lt;p&gt;&lt;strong&gt;Mikroslužba&lt;/strong&gt; je &lt;strong&gt;oddělený izolovaný&lt;/strong&gt; a
 &lt;strong&gt;pojmenovaný&lt;/strong&gt; kus logiky, který konzumuje 0..N vstupů a
 produkuje 0..N výstupů, který je &lt;strong&gt;vykonaný&lt;/strong&gt; za účelem
 přinést konzumentovi nějakou výhodu. Toto je poskytováno jako služba.&lt;/p&gt;
 
-&lt;h1 id=&quot;toc-diskretni&quot;&gt;Diskrétní&lt;/h1&gt;
+&lt;h3 id=&quot;toc-diskretni&quot;&gt;Oddělená&lt;/h3&gt;
 
 &lt;p&gt;Důvodem, proč to nazýváme Mikroslužbou a ne Službou, není počet
 řádek, který je menší než N, nebo velikost nasazované služby, která je
@@ -40021,7 +40021,7 @@ maximálně N kilobajtů nebo žádná jiná libovolná metrika. Tím důvodem
 je nízký počet zodpovědností: jedna. &lt;em&gt;Dělá to jen jednu věc a tu
 dělá skvěle.&lt;/em&gt;&lt;/p&gt;
 
-&lt;h1 id=&quot;toc-izolovana&quot;&gt;Izolovaná&lt;/h1&gt;
+&lt;h3 id=&quot;toc-izolovana&quot;&gt;Izolovaná&lt;/h3&gt;
 
 &lt;p&gt;Izolovaná znamená, že funguje odděleně od ostatních věcí, což z&amp;nbsp;ní
 dělá &lt;em&gt;distribuovanou entitu.&lt;/em&gt; Nezáleží na tom, kde konkrétně
@@ -40030,21 +40030,21 @@ zůstává to v&amp;nbsp;izolaci. Předchází se tak kaskádovému šíření c
 Navíc nám to umožňuje snadno vyvíjet a aktualizovat službu
 samostatně.&lt;/p&gt;
 
-&lt;h1 id=&quot;toc-pojmenovana&quot;&gt;Pojmenovaná&lt;/h1&gt;
+&lt;h3 id=&quot;toc-pojmenovana&quot;&gt;Pojmenovaná&lt;/h3&gt;
 
 &lt;p&gt;Jelikož jsou Mikroslužby izolované, potřebujeme na ně nějakým
 způsobem odkazovat. Jméno v&amp;nbsp;kombinaci se vstupy a výstupy
-&lt;strong&gt;Mikroslužby ** nám definují signaturu nebo identifikátor
-**Mikroslužby&lt;/strong&gt;.&lt;/p&gt;
+&lt;strong&gt;Mikroslužby&lt;/strong&gt; nám definují signaturu nebo identifikátor
+&lt;strong&gt;Mikroslužby&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;h1 id=&quot;toc-vstupy-a-vystupy&quot;&gt;Vstupy a výstupy&lt;/h1&gt;
+&lt;h3 id=&quot;toc-vstupy-a-vystupy&quot;&gt;Vstupy a výstupy&lt;/h3&gt;
 
 &lt;p&gt;Pokud máme jazyk, který podporuje typové informace, vstupy a výstupy
 mohou být typové. Tyto typy by měly být reflektovány při manipulaci. Což
 znamená, že konzument služby by měl znát, co služba přijímá a co
 poskytuje.&lt;/p&gt;
 
-&lt;h1 id=&quot;toc-vykonani&quot;&gt;Vykonání&lt;/h1&gt;
+&lt;h3 id=&quot;toc-vykonani&quot;&gt;Vykonání&lt;/h3&gt;
 
 &lt;p&gt;Protože konzument není ten, kdo vykonává logiku Mikroslužby, a
 Mikroslužby jsou přirozeně distribuované, volání nesmí konzumenta
@@ -40067,11 +40067,11 @@ Tohle je má definice.
 
 ## Definice
 
-**Mikroslužba** je **diskrétní, izolovaný** a **pojmenovaný** kus logiky,
+**Mikroslužba** je **oddělený izolovaný** a **pojmenovaný** kus logiky,
 který konzumuje 0..N vstupů a produkuje 0..N výstupů, který je **vykonaný**
 za účelem přinést konzumentovi nějakou výhodu. Toto je poskytováno jako služba.
 
-## Diskrétní
+## Oddělená
 
 Důvodem, proč to nazýváme Mikroslužbou a ne Službou, není počet řádek,
 který je menší než N, nebo velikost nasazované služby, která je maximálně
@@ -40117,5 +40117,182 @@ Překlad článku [Microservices](http://klangism.tumblr.com/post/80087171446/mi
     <tags>#x20;</tags>
     <is-published>1</is-published>
     <edited>2014-03-26T07:00:00.663</edited>
+  </article>
+  <article>
+    <id>456</id>
+    <title>Reaktivní programování</title>
+    <description>V uplynulém roce se začaly hejbat ledy okolo rektivních extenzí
+      a reaktivního programování vůbec. A já byl u toho.</description>
+    <html xml:space="preserve">
+&lt;p&gt;V&amp;nbsp;uplynulém roce se začaly hejbat ledy okolo rektivních extenzí a
+reaktivního programování vůbec. A&amp;nbsp;já byl u&amp;nbsp;toho.&amp;nbsp;:)&lt;/p&gt;
+
+&lt;h3 id=&quot;toc-reaktivni-manifest&quot;&gt;Reaktivní manifest&lt;/h3&gt;
+
+&lt;p&gt;Byl publikován &lt;a href=&quot;http://www.reactivemanifesto.org/&quot;&gt;Reaktivní
+manifest&lt;/a&gt;, který se snaží definovat, jak mají reaktivní aplikace vypadat
+a&amp;nbsp;proč.&lt;/p&gt;
+
+&lt;ol&gt;
+    &lt;li&gt;Mají reagovat na události&lt;/li&gt;
+
+    &lt;li&gt;Mají reagovat na zátěž&lt;/li&gt;
+
+    &lt;li&gt;Mají reagovat na selhání&lt;/li&gt;
+
+    &lt;li&gt;Mají reagovat na uživatele&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Manifest vyjadřuje moje snažení v&amp;nbsp;uplynulých letech, takže jsem ho
+samozřejmě signoval.&lt;/p&gt;
+
+&lt;h3 id=&quot;toc-czpodcast&quot;&gt;CZPodcast&lt;/h3&gt;
+
+&lt;p&gt;Již potřetí jsem byl pozván do CZPodcastu, abychom se pobavili
+o&amp;nbsp;reaktivním programování, reaktivním manifestu a reaktivních
+extenzích.&lt;/p&gt;
+
+&lt;iframe width=&quot;660&quot; height=&quot;180&quot;
+src=&quot;//www.mixcloud.com/widget/iframe/?feed=http%3A%2F%2Fwww.mixcloud.com%2Falesroubicek%2Fcz-podcast-92-reaktivn%C3%AD-programov%C3%A1n%C3%AD%2F&amp;amp;embed_uuid=9e0ea1a4-5e5c-4f6e-9299-ddcd287bb341&amp;amp;replace=0&amp;amp;hide_cover=1&amp;amp;embed_type=widget_standard&amp;amp;hide_tracklist=1&quot;
+frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+
+&lt;div style=&quot;clear: both; height: 3px; width: 652px;&quot;&gt;&lt;/div&gt;
+
+&lt;p
+style=&quot;display: block; font-size: 11px; font-family: &#39;Open Sans&#39;, Helvetica, Arial, sans-serif; margin: 0px; padding: 3px 4px; color: rgb(153, 153, 153); width: 652px;&quot;&gt;&lt;a
+href=&quot;http://www.mixcloud.com/alesroubicek/cz-podcast-92-reaktivn%C3%AD-programov%C3%A1n%C3%AD/?utm_source=widget&amp;amp;amp;utm_medium=web&amp;amp;amp;utm_campaign=base_links&amp;amp;amp;utm_term=resource_link&quot;
+target=&quot;_blank&quot; style=&quot;color:#808080; font-weight:bold;&quot;&gt;CZ Podcast 92&amp;nbsp;&amp;ndash;
+Reaktivní programování&lt;/a&gt;&lt;span&gt; by &lt;/span&gt;&lt;a
+href=&quot;http://www.mixcloud.com/alesroubicek/?utm_source=widget&amp;amp;amp;utm_medium=web&amp;amp;amp;utm_campaign=base_links&amp;amp;amp;utm_term=profile_link&quot;
+target=&quot;_blank&quot; style=&quot;color:#808080; font-weight:bold;&quot;&gt;Aleš
+Roubíček&lt;/a&gt;&lt;span&gt; on&lt;/span&gt;&lt;a
+href=&quot;http://www.mixcloud.com/?utm_source=widget&amp;amp;utm_medium=web&amp;amp;utm_campaign=base_links&amp;amp;utm_term=homepage_link&quot;
+target=&quot;_blank&quot; style=&quot;color:#808080; font-weight:bold;&quot;&gt; Mixcloud&lt;/a&gt;&lt;/p&gt;
+
+&lt;div style=&quot;clear: both; height: 3px; width: 652px;&quot;&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;toc-devfest-pardubice&quot;&gt;DevFest Pardubice&lt;/h3&gt;
+
+&lt;p&gt;Na DevFestu jsem měl přednášku o&amp;nbsp;Reaktivním programování a
+reaktivních extenzích.&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;//www.youtube.com/embed/CzmWzG_QsUE&quot;
+frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+    </html>
+    <raw xml:space="preserve">
+V uplynulém roce se začaly hejbat ledy okolo rektivních extenzí a reaktivního
+programování vůbec. A já byl u toho. :)
+
+## Reaktivní manifest
+
+Byl publikován [Reaktivní manifest](http://www.reactivemanifesto.org/), který
+se snaží definovat, jak mají reaktivní aplikace vypadat a proč.
+
+1. Mají reagovat na události
+2. Mají reagovat na zátěž
+3. Mají reagovat na selhání
+4. Mají reagovat na uživatele
+
+Manifest vyjadřuje moje snažení v uplynulých letech, takže jsem ho samozřejmě signoval.
+
+## CZPodcast
+
+Již potřetí jsem byl pozván do CZPodcastu, abychom se pobavili o reaktivním programování,
+reaktivním manifestu a reaktivních extenzích.
+
+&lt;iframe width=&quot;660&quot; height=&quot;180&quot; src=&quot;//www.mixcloud.com/widget/iframe/?feed=http%3A%2F%2Fwww.mixcloud.com%2Falesroubicek%2Fcz-podcast-92-reaktivn%C3%AD-programov%C3%A1n%C3%AD%2F&amp;amp;embed_uuid=9e0ea1a4-5e5c-4f6e-9299-ddcd287bb341&amp;amp;replace=0&amp;amp;hide_cover=1&amp;amp;embed_type=widget_standard&amp;amp;hide_tracklist=1&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;&lt;div style=&quot;clear: both; height: 3px; width: 652px;&quot;&gt;&lt;/div&gt;&lt;p style=&quot;display: block; font-size: 11px; font-family: &#39;Open Sans&#39;, Helvetica, Arial, sans-serif; margin: 0px; padding: 3px 4px; color: rgb(153, 153, 153); width: 652px;&quot;&gt;&lt;a href=&quot;http://www.mixcloud.com/alesroubicek/cz-podcast-92-reaktivn%C3%AD-programov%C3%A1n%C3%AD/?utm_source=widget&amp;amp;amp;utm_medium=web&amp;amp;amp;utm_campaign=base_links&amp;amp;amp;utm_term=resource_link&quot; target=&quot;_blank&quot; style=&quot;color:#808080; font-weight:bold;&quot;&gt;CZ Podcast 92 - Reaktivní programování&lt;/a&gt;&lt;span&gt; by &lt;/span&gt;&lt;a href=&quot;http://www.mixcloud.com/alesroubicek/?utm_source=widget&amp;amp;amp;utm_medium=web&amp;amp;amp;utm_campaign=base_links&amp;amp;amp;utm_term=profile_link&quot; target=&quot;_blank&quot; style=&quot;color:#808080; font-weight:bold;&quot;&gt;Aleš Roubíček&lt;/a&gt;&lt;span&gt; on &lt;/span&gt;&lt;a href=&quot;http://www.mixcloud.com/?utm_source=widget&amp;amp;utm_medium=web&amp;amp;utm_campaign=base_links&amp;amp;utm_term=homepage_link&quot; target=&quot;_blank&quot; style=&quot;color:#808080; font-weight:bold;&quot;&gt; Mixcloud&lt;/a&gt;&lt;/p&gt;&lt;div style=&quot;clear: both; height: 3px; width: 652px;&quot;&gt;&lt;/div&gt;
+
+## DevFest Pardubice
+
+Na DevFestu jsem měl přednášku o Reaktivním programování a reaktivních extenzích.
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;//www.youtube.com/embed/CzmWzG_QsUE&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
+    </raw>
+    <author>Aleš Roubíček</author>
+    <published>2014-04-03T18:00:00.663</published>
+    <url>reaktivni-programovani</url>
+    <category>Moje práce</category>
+    <keywords></keywords>
+    <tags>#x20;</tags>
+    <is-published>1</is-published>
+    <edited>2014-04-03T18:00:00.663</edited>
+  </article>
+    <article>
+    <id>457</id>
+    <title>Velká pyramida</title>
+    <description>Programátoři dostali na starost projekt na zelené louce: „Postavte
+      pyramidu.“</description>
+    <html xml:space="preserve">
+&lt;p&gt;Programátoři dostali na starost projekt na zelené louce: „Postavte
+pyramidu.“&lt;/p&gt;
+
+&lt;p&gt;Úkolu se chopili svědomitě. Architekturu rozdělili do tří vrstev,
+protože tak se to vždycky osvědčilo. Nejprve začali návrhem databázového
+modelu. Po dlouhosáhlých debatách, jestli použít Oracle nebo zkusit
+nějaké NoSQL řešení (třeba Mongo), zjistili, že pyramida žádnou
+databázi nepotřebuje.&lt;/p&gt;
+
+&lt;p&gt;Pro jistotu naimplementovali doménovou vrstvu. „Ta tam být musí!“ Byla
+to krásná &lt;a href=&quot;https://www.laputan.org/mud/&quot;&gt;velká koule z&amp;nbsp;bláta&lt;/a&gt;.
+Nic na plat, že koule ani zdaleka pyramidu nepřipomíná, ale takhle to
+prostě dělají. Několik borců přišlo s&amp;nbsp;návrhem elegantního řešení:
+„Uděláme novou verzi, která bude hranatější! Tady kluci už mají
+prototyp postavený na kolejích.“ Nutno dodat, že to byl velice krásný
+dodekahedron.&lt;/p&gt;
+
+&lt;p&gt;Pak přišla na řadu vrstva servisní, kde se použilo WCF, protože v&amp;nbsp;něm
+lze prát RESTový i&amp;nbsp;SOAP služby vpodstatě najednou. A&amp;nbsp;tak se stalo, že
+nová vrstva okolo koule z&amp;nbsp;bláta vypadala úplně jako, když si vytáhnete
+sluchátka po týdnu z&amp;nbsp;kapsy&amp;nbsp;&amp;ndash; klubíčko neštěstí.&lt;/p&gt;
+
+&lt;p&gt;Blížil se šibeniční termín a nikomu ta změt stále pyramidu
+nepřipomínala. Pozvali si tedy ostřílené konzultanty, kteří už měli za
+sebou zkušenosti se stavbou zemljanek a dětských hřišť. Po dlouhých
+debatách přišli s&amp;nbsp;geniálním řešením: Потёмкин.&lt;/p&gt;
+
+&lt;p&gt;Kouli z&amp;nbsp;bláta obalenou změtí kabelů schovali za krásnou kulisu
+vyrobenou z&amp;nbsp;fotky z&amp;nbsp;Gízy. Detailu, že fotky z&amp;nbsp;webu nejsou v&amp;nbsp;dostatečným
+rozlišení pro tak velkou kulisu, si nevšímejte. Stačí nechodit moc
+blízko.&lt;/p&gt;
+    </html>
+    <raw xml:space="preserve">
+Programátoři dostali na starost projekt na zelené louce: "Postavte pyramidu."
+
+Úkolu se chopili svědomitě. Architekturu rozdělili do tří vrstev,
+protože tak se to vždycky osvědčilo. Nejprve začali návrhem databázového
+modelu. Po dlouhosáhlých debatách, jestli použít Oracle nebo zkusit
+nějaké NoSQL řešení (třeba Mongo), zjistili, že pyramida žádnou databázi
+nepotřebuje.
+
+Pro jistotu naimplementovali doménovou vrstvu. "Ta tam být musí!" Byla
+to krásná "velká koule z bláta":[https://www.laputan.org/mud/]. Nic na
+plat, že koule ani zdaleka pyramidu nepřipomíná, ale takhle to prostě
+dělají. Několik borců přišlo s návrhem elegantního řešení: "Uděláme
+novou verzi, která bude hranatější! Tady kluci už mají prototyp
+postavený na kolejích." Nutno dodat, že to byl velice krásný
+dodekahedron.
+
+Pak přišla na řadu vrstva servisní, kde se použilo WCF, protože v něm
+lze prát RESTový i SOAP služby vpodstatě najednou. A tak se stalo, že
+nová vrstva okolo koule z bláta vypadala úplně jako, když si vytáhnete
+sluchátka po týdnu z kapsy - klubíčko neštěstí.
+
+Blížil se šibeniční termín a nikomu ta změt stále pyramidu
+nepřipomínala. Pozvali si tedy ostřílené konzultanty, kteří už měli za
+sebou zkušenosti se stavbou zemljanek a dětských hřišť. Po dlouhých
+debatách přišli s geniálním řešením: Потёмкин.
+
+Kouli z bláta obalenou změtí kabelů schovali za krásnou kulisu vyrobenou
+z fotky z Gízy. Detailu, že fotky z webu nejsou v dostatečným rozlišení
+pro tak velkou kulisu, si nevšímejte. Stačí nechodit moc blízko.
+    </raw>
+    <author>Aleš Roubíček</author>
+    <published>2014-07-04T12:00:00.663</published>
+    <url>velka-pyramida</url>
+    <category>Jen tak</category>
+    <keywords></keywords>
+    <tags>#x20;</tags>
+    <is-published>1</is-published>
+    <edited>2014-07-04T12:00:00.663</edited>
   </article>
 </articles>
