@@ -38140,15 +38140,15 @@ zařízení &lt;strong&gt;ať se nám ozve samo&lt;/strong&gt;, až bude jeho od
 připravená. Mezi tím se může aplikace věnovat jiným úlohám. Žádná
 vlákna zde není třeba zmiňovat.&lt;/p&gt;
 
-&lt;p&gt;Pokud zadáme úlohu ke zpracování jinému vláknu, zavádíme konkurenci.
+&lt;p&gt;Pokud zadáme úlohu ke zpracování jinému vláknu, zavádíme paralelizaci.
 Ukázka výše odstartuje nový Task, který se s největší
 pravděpodobností spustí na jiném threadu a záhy ho zamkne. Sice neblokuje
 vlákno, ze kterého operaci voláme, ale blokujeme vlákno jiné. Jaký je
-účel? A náklady na synchronizaci?&lt;/p&gt;
+účel? A náklady?&lt;/p&gt;
 
 &lt;p&gt;Paralelizace je vhodná tam, kde máme &lt;strong&gt;výpočetně náročné
 operace&lt;/strong&gt; a dají se rozdělit na několik kroků, které mohou běžet
-konkurenčně. Tj. nesdílí stav a slouží třeba jako mezivýsledky
+zároveň. Tj. nesdílí stav a slouží třeba jako mezivýsledky
 v nějakém větším výpočtu. Typickým příkladem může být Map/Reduce.
 Mapování může běžet paralelně, redukce pak proběhne po doběhnutí
 mapování, případně může také probíhat paralelně v nějakých
@@ -38227,7 +38227,13 @@ nezveřejňujeme v APIs. Pro asynchronní operace nepoužíváme
 i vy. :)&lt;/p&gt;
 
 &lt;!-- by Texy2! --&gt;</html>
-    <raw xml:space="preserve">S příchodem `async/await` do C# 5.0 se nám v různých APIs objevily asynchronní metody, které vracejí `Task` nebo `Task&lt;T&gt;` a jejich název je vybaven kouzelným postfixem `Async`. Jde o takzvaný "Task-based Asynchronous Pattern (TAP)":[http://msdn.microsoft.com/en-us/library/hh873175.aspx]. A protože je postavený na datové struktuře `Task` může svádět k vlastním implementacím, které nejsou tak říkajíc *zrovna optimální*.
+    <raw xml:space="preserve">S příchodem `async/await` do C# 5.0 se nám
+v různých APIs objevily asynchronní metody, které vracejí `Task`
+nebo `Task&lt;T&gt;` a jejich název je vybaven kouzelným postfixem
+`Async`. Jde o takzvaný "Task-based Asynchronous Pattern
+(TAP)":[http://msdn.microsoft.com/en-us/library/hh873175.aspx]. A
+protože je postavený na datové struktuře `Task` může svádět k vlastním
+implementacím, které nejsou tak říkajíc *zrovna optimální*.
 
 &lt;blockquote class="twitter-tweet"&gt;&lt;p&gt;That's an &lt;a href="https://twitter.com/search/%23async"&gt;#async&lt;/a&gt; implementation! Not! &lt;a href="http://t.co/sHBSxhfthj" title="http://ow.ly/jjzrf"&gt;ow.ly/jjzrf&lt;/a&gt; &lt;a href="https://twitter.com/search/%23sqlite"&gt;#sqlite&lt;/a&gt;&lt;/p&gt;&amp;mdash; Jiri Cincura (@cincura_net) &lt;a href="https://twitter.com/cincura_net/status/315067029021413376"&gt;March 22, 2013&lt;/a&gt;&lt;/blockquote&gt;
 
@@ -38256,9 +38262,9 @@ Nejprve bychom si asi měli ujasnit, jaký rozdíl je mezi asynchronním a paral
 Představte si dlouhotrvajících operaci. Řekněme takovou, která není přímo spojená s výpočtem (CPU-bounded), ale takovou, která si šahá na některé ze vstupně/výstupních zařízení (IO-bounded).
 Tak tedy vězte, že asynchronní operace je taková, která běží v tomto zařízení. Pokud třeba čteme z disku, databáze nebo z cloudu, pošleme požadavek na zařízení a **nečekáme na odpověď** přímo, ale necháme zařízení **ať se nám ozve samo**, až bude jeho odpověď připravená. Mezi tím se může aplikace věnovat jiným úlohám. Žádná vlákna zde není třeba zmiňovat.
 
-Pokud zadáme úlohu ke zpracování jinému vláknu, zavádíme konkurenci. Ukázka výše odstartuje nový Task, který se s největší pravděpodobností spustí na jiném threadu a záhy ho zamkne. Sice neblokuje vlákno, ze kterého operaci voláme, ale blokujeme vlákno jiné. Jaký je účel? A náklady na synchronizaci?
+Pokud zadáme úlohu ke zpracování jinému vláknu, zavádíme paralelizaci. Ukázka výše odstartuje nový Task, který se s největší pravděpodobností spustí na jiném threadu a záhy ho zamkne. Sice neblokuje vlákno, ze kterého operaci voláme, ale blokujeme vlákno jiné. Jaký je účel? A náklady?
 
-Paralelizace je vhodná tam, kde máme **výpočetně náročné operace** a dají se rozdělit na několik kroků, které mohou běžet konkurenčně. Tj. nesdílí stav a slouží třeba jako mezivýsledky v nějakém větším výpočtu. Typickým příkladem může být Map/Reduce. Mapování může běžet paralelně, redukce pak proběhne po doběhnutí mapování, případně může také probíhat paralelně v nějakých clusterech dat.
+Paralelizace je vhodná tam, kde máme **výpočetně náročné operace** a dají se rozdělit na několik kroků, které mohou běžet zároveň. Tj. nesdílí stav a slouží třeba jako mezivýsledky v nějakém větším výpočtu. Typickým příkladem může být Map/Reduce. Mapování může běžet paralelně, redukce pak proběhne po doběhnutí mapování, případně může také probíhat paralelně v nějakých clusterech dat.
 
 Tak, snad je to už jasné. :)
 
