@@ -40301,4 +40301,116 @@ pro tak velkou kulisu, si nevšímejte. Stačí nechodit moc blízko.
     <is-published>1</is-published>
     <edited>2014-07-04T12:00:00.663</edited>
   </article>
+  <article>
+    <id>458</id>
+    <title>Proč je [programovací jazyk X] rozhodně lepší než [programovací jazyk Y]</title>
+    <description>Pojďme si jednou pro vždy ujasnit, proč je jazyk [X] rozhodně lepší než jazyk [Y].</description>
+    <html xml:space="preserve">
+&lt;p&gt;Poslední dobou můžete najít spoustu srovnání, proč je [X] lepší než
+[Y], často ale může být pozorný čtenář ještě víc zmaten. Nakonec,
+vždyť oba jazyky jsou [pardigma] orientované, které běží na [platforma] a
+usnadňují programovat [styl] stylem, zatímco ponechávají dostatek
+flexibility, abyste mohli psát [sračkoidní&amp;nbsp;kód].&lt;/p&gt;
+
+&lt;p&gt;Jelikož jsem napsal [jednoduchý CRUD backend] v&amp;nbsp;obou jazycích, cítím se
+být dostatečně kvalifikovaný na to, aboch některé věci vyjasnil.
+Představte si [jednoduchý problém, který byste zadali páťákovi, který se
+učí programovat]. Implementace v [Y] by mohla vypdat nějak&amp;nbsp;tak:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[Opravdu špatný kód v Y ]&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Naproti tomu v [X] by to mohlo vypadat jen takhle:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[Vyleštěný kód v X, který předvádí syntaktický cukr]&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Je celkem jasné, že druhá ukázka je mnohem snažší na pochopení a
+odolnější vůči chybám.&lt;/p&gt;
+
+&lt;p&gt;Teď zvažmě typové systémy. [Přesvědčení o&amp;nbsp;tom, jaké relativní
+výhody a nevýhosy přináší statické/dynamické typování.] Jistě, [Y]
+nám dává [výhody Y typového systému nebo naopak jeho absence], ale
+vyváží to [nevýhody Y typového systému nebo jeho absence]? Jistě,
+že&amp;nbsp;ne!&lt;/p&gt;
+
+&lt;p&gt;Dále se musíme podívat na buildovací nástroje. Zatímco [Y] používá
+[nástroj, kerý jsem se neobtěžoval pochopit], [X] používá mnohem
+vychytanější [nástroj, který jsem trošku pochopil]. To je dostatečný
+důvod na switch!&lt;/p&gt;
+
+&lt;p&gt;Podívejme se na to obšírněji. [X] má úžasnou [featura specifická pro
+X IDE, která je stále v&amp;nbsp;alpha verzi] a také má skvělou integraci do [asi
+50&amp;nbsp;let starý textový editor, jehož klávesové zkratky vycházejí
+z&amp;nbsp;klingonštiny] a [IDE, které všichni používají a z&amp;nbsp;hlouby duše
+nenávidí]. Jistě, [Y] taky můžete psát v&amp;nbsp;některém z&amp;nbsp;nich, ale je to
+mnohem složitější a bolestivější.&lt;/p&gt;
+
+&lt;p&gt;Nakonec, ikdyž je tu místo pro vícejazyčnost na platformě [platform],
+bylo by lepší, kdyby se šli [Y] programátoři někam zahrabat, nebo switchli
+na [X] a soupeřili s&amp;nbsp;náma o&amp;nbsp;hrstku [X] pracovních míst. Počkat, beru
+zpět. [Y] je úžasný!&lt;/p&gt;
+
+&lt;p&gt;Volný překlad článku od &lt;a
+href=&quot;http://joelgrus.com/2013/12/24/why-programming-language-x-is-unambiguously-better-than-programming-language-y/&quot;&gt;Joela
+Gruse&amp;nbsp;&amp;ndash; Why [Programming Language X] Is Unambiguously Better than
+[Programming Language&amp;nbsp;Y]&lt;/a&gt;&lt;/p&gt;
+    </html>
+    <raw xml:space="preserve">
+Poslední dobou můžete najít spoustu srovnání, proč je [X] lepší než [Y],
+často ale může být pozorný čtenář ještě víc zmaten. Nakonec, vždyť oba
+jazyky jsou [pardigma] orientované, které běží na [platforma] a usnadňují
+programovat [styl] stylem, zatímco ponechávají dostatek flexibility,
+abyste mohli psát [sračkoidní kód].
+
+Jelikož jsem napsal [jednoduchý CRUD backend] v obou jazycích, cítím se
+být dostatečně kvalifikovaný na to, aboch některé věci  vyjasnil.
+Představte si [jednoduchý problém, který byste zadali páťákovi, který se
+učí programovat]. Implementace v [Y] by mohla vypdat nějak tak:
+
+/--code
+[Opravdu špatný kód v Y ]
+\--
+
+Naproti tomu v [X] by to mohlo vypadat jen takhle:
+
+/--code
+[Vyleštěný kód v X, který předvádí syntaktický cukr]
+\--
+
+Je celkem jasné, že druhá ukázka je mnohem snažší na pochopení a
+odolnější vůči chybám.
+
+Nebo třeba typové systémy. [Přesvědčení o tom, jaké relativní výhody a
+nevýhosy přináší statické/dynamické typování.] Jistě, [Y] nám dává
+[výhody Y typového systému nebo naopak jeho absence], ale vyváží to
+[nevýhody Y typového systému nebo jeho absence]? Jistě, že ne!
+
+Dále se musíme podívat na buildovací nástroje. Zatímco [Y] používá
+[nástroj, kerý jsem se neobtěžoval pochopit], [X] používá mnohem
+vychytanější [nástroj, který jsem trošku pochopil]. To už je dostatečný
+důvod na switch!
+
+Podívejme se na to obšírněji. [X] má úžasnou [featura specifická pro X
+IDE, která je stále v alpha verzi] a také má skvělou integraci do [asi
+50 let starý textový editor, jehož klávesové zkratky vycházejí z
+klingonštiny] a do [IDE, které všichni používají a z hlouby duše
+nenávidí]. Jistě, [Y] taky můžete psát v některém z nich, ale je to
+mnohem složitější a bolestivější.
+
+Nakonec, ikdyž je tu místo pro vícejazyčnost na platformě [platform],
+bylo by lepší, kdyby se šli [Y] programátoři někam zahrabat, nebo
+switchli na [X] a soupeřili s náma o hrstku [X] pracovních míst. Počkat,
+beru zpět. Jazyk [Y] je úžasný!
+
+Volný překlad článku od "Joela Gruse - Why [Programming Language X] Is
+Unambiguously Better than [Programming Language Y]":[http://joelgrus.com/2013/12/24/why-programming-language-x-is-unambiguously-better-than-programming-language-y/]
+    </raw>
+    <author>Aleš Roubíček</author>
+    <published>2014-07-16T11:00:00.663</published>
+    <url>proc-je-jazyk-x-lepsi-nez-y</url>
+    <category>Jen tak</category>
+    <keywords></keywords>
+    <tags>#x20;</tags>
+    <is-published>1</is-published>
+    <edited>2014-07-16T11:00:00.663</edited>
+  </article>
 </articles>
