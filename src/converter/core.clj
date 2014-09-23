@@ -1,5 +1,6 @@
 (ns converter.core
   (:require [clj-time.core :as t]
+            [clj-time.coerce :refer [from-string to-date]]
             [clojure.core.reducers :as r]
             [clojure.pprint]
             [clojure.java.io :as io]
@@ -7,40 +8,29 @@
             [clojure.data.xml :as xml]
             [clojure.data.zip :as zd]
             [clojure.data.zip.xml :as zf]
-            [clojure.string :as str])
+            [clojure.string :as str]
+            [cognitect.transit :as transit])
   (:import [java.text Normalizer Normalizer$Form]))
-
-(use 'clj-time.coerce)
 
 (defn remove-diacritics
   "Remove diacritical marks from the string `s`, E.g., 'żółw' is transformed
   to 'zolw'."
-  [ ^String s ]
+  [^String s]
   (.replaceAll (Normalizer/normalize s Normalizer$Form/NFD) "\\p{InCombiningDiacriticalMarks}+" ""))
 
-(defmethod print-dup org.joda.time.DateTime
-  [^org.joda.time.DateTime d out]
-  (print-dup (.toDate d) out))
-
-(defmethod print-method org.joda.time.DateTime
-  [^org.joda.time.DateTime d out]
-  (print-method (.toDate d) out))
-
-(defn- get-root [xml-string]
+(defn- get-root [^String xml-string]
   (some-> xml-string
           xml/parse-str
           zip/xml-zip))
 
-(def articles (slurp (io/resource "articles.xml")))
-(def root (get-root articles))
-
-(defn- urlize [s]
-  (str (remove-diacritics (str/replace (str/lower-case s) #"[\s|\.]" "-")) ".aspx"))
+(defn- urlize [^String s]
+  (let [urlized (-> s remove-diacritics str/lower-case (str/replace #"[\s|\.]" "-"))]
+    (str urlized ".aspx")))
 
 (defn- tags->vector [article]
   (let [tags (some-> (zf/xml1-> article :tags zf/text)
-                     (clojure.string/replace "#x20;" "")
-                     (clojure.string/split #"\s"))]
+                     (str/replace "#x20;" "")
+                     (str/split #"\s"))]
     (filterv (comp not empty?) (or tags []))))
 
 (defn- article->detail-map [article]
@@ -59,7 +49,7 @@
    :tags (tags->vector article)})
 
 (defn- index-by-url [{:keys [id url] :as article}]
-    [(keyword (str id "-" url ".aspx")) article])
+  [(keyword (str id "-" url ".aspx")) article])
 
 (defn- articles-result [root]
   (->> (zf/xml-> root :article)
@@ -89,9 +79,25 @@
        (sort-by :id >)
        (group-by (comp keyword urlize :category))))
 
-(defn -main [& args]
-  (println "Processing articles")
-  (time (clojure.pprint/pprint (articles-result root) (io/writer "articles.edn")))
-  (println "Processing categories")
-  (time (clojure.pprint/pprint (rubrics-result root) (io/writer "rubrics.edn"))))
+(def joda-time-writer
+  (transit/write-handler
+   (constantly "m")
+   #(-> % to-date .getTime)
+   #(-> % to-date .getTime .toString)))
 
+(defn trans-write [data file]
+  (with-open [out (io/output-stream file)]
+     (transit/write (transit/writer out :msgpack {:handlers {org.joda.time.DateTime joda-time-writer}}) data)))
+
+(defn trans [root]
+  (println "Processing articles")
+  (time (trans-write (articles-result root) "out/articles.mp"))
+  (println "Processing categories")
+  (time (trans-write (rubrics-result root) "out/rubrics.mp")))
+
+(defn -main [& args]
+  (let [articles (slurp (io/resource "articles.xml"))
+        root (get-root articles)]
+    (trans root)))
+
+;; (-main)
