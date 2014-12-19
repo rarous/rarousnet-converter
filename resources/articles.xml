@@ -41324,7 +41324,7 @@ vytáhnout pomocí funkce &lt;code&gt;getIn&lt;/code&gt;, která umí efektivně
 stromovou strukturu.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;lang-javascript&quot;&gt;var bar = data.getIn([&apos;bars&apos;, &apos;bar-id&apos;]);
-var foo = data.getIn([&apos;foos&apos;, bar.foo]);&lt;/code&gt;&lt;/pre&gt;
+var foo = data.getIn([&apos;foos&apos;, bar.get(&apos;foo&apos;)]);&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Dnes jsme narazil na zajímavý problém. Potřebuji mazat záznamy a když
 smažu &lt;code&gt;foo&lt;/code&gt; potřebuju smazat i&amp;nbsp;patřičné &lt;code&gt;bar&lt;/code&gt;y,
@@ -41339,8 +41339,8 @@ na námi mazané &lt;code&gt;foo&lt;/code&gt;. Pro definici dataflow používám
 href=&quot;https://github.com/cognitect-labs/transducers-js&quot;&gt;transducery&lt;/a&gt;:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;lang-javascript&quot;&gt;var xform = comp(
-    filter(x =&amp;gt; x.foo == id),
-    map(x =&amp;gt; x.id));&lt;/code&gt;&lt;/pre&gt;
+    filter(x =&amp;gt; x.get(&apos;foo&apos;) == id),
+    map(x =&amp;gt; x.get(&apos;id&apos;)));&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Celkem jednoduchý, přímočarý kód. Nic extra. Ale co teď s&amp;nbsp;nima?
 Potřebujeme z&amp;nbsp;immutable kolekce odebrat N prvků. Mohli bychom to vzít
@@ -41348,7 +41348,7 @@ povědomou imperativní cestou:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;lang-javascript&quot;&gt;var nextData = data.removeIn([&apos;foos&apos;, id]);
 into([], xform, data.get(&apos;bars&apos;).values()).forEach(x =&amp;gt; {
-    nextData = data.removeIn([&apos;bars&apos;, x]);
+    nextData = nextData.removeIn([&apos;bars&apos;, x]);
 });&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Ale opravdu používáme immutabilní datové struktury, abychom vzápětí
@@ -41395,7 +41395,7 @@ Prvky jsou indexovány podle typu a dále podle jejich uníkátních `id`. Druh�
 
 /--code javascript
 var bar = data.getIn([&apos;bars&apos;, &apos;bar-id&apos;]);
-var foo = data.getIn([&apos;foos&apos;, bar.foo]);
+var foo = data.getIn([&apos;foos&apos;, bar.get(&apos;foo&apos;)]);
 \--code
 
 Dnes jsme narazil na zajímavý problém. Potřebuji mazat záznamy a když smažu `foo` potřebuju smazat i patřičné `bar`y, které na něj mají referenci, protože jejich přítomnost už není žádoucí. Smazat samotné `foo` je celkem přímočaré:
@@ -41408,8 +41408,8 @@ Funkce `removeIn` vrací novou koleci bez prvku se zadanou cestou. Teď ovšem p
 
 /--code javascript
 var xform = comp(
-    filter(x =&gt; x.foo == id),
-    map(x =&gt; x.id));
+    filter(x =&gt; x.get(&apos;foo&apos;) == id),
+    map(x =&gt; x.get(&apos;id&apos;)));
 \--code
 
 Celkem jednoduchý, přímočarý kód. Nic extra. Ale co teď s nima? Potřebujeme z immutable kolekce odebrat N prvků. Mohli bychom to vzít  povědomou imperativní cestou:
@@ -41417,7 +41417,7 @@ Celkem jednoduchý, přímočarý kód. Nic extra. Ale co teď s nima? Potřebuj
 /--code javascript
 var nextData = data.removeIn([&apos;foos&apos;, id]);
 into([], xform, data.get(&apos;bars&apos;).values()).forEach(x =&gt; {
-    nextData = data.removeIn([&apos;bars&apos;, x]);
+    nextData = nextData.removeIn([&apos;bars&apos;, x]);
 });
 \--code
 
@@ -41446,5 +41446,123 @@ Tak a teď se jděte projít.
     <tags>javascript, transducers, immutable</tags>
     <is-published>1</is-published>
     <edited>2014-12-1T19:15:00.663</edited>
+  </article>
+  <article>
+    <id>462</id>
+    <title>Technologický radar - zima 2014</title>
+    <description>Pár poznámek k aktuálně vydanému technologickému radaru.</description>
+    <html xml:space="preserve">
+&lt;p&gt;Na sklonku roku 2014&amp;nbsp;Thoughtworks vydávají svůj tradiční technologický
+radar. Rád bych z&amp;nbsp;něj vypíchnul některé zajímavé&amp;nbsp;body.&lt;/p&gt;
+
+&lt;h3 id=&quot;toc-nopsd&quot;&gt;NoPSD&lt;/h3&gt;
+
+&lt;p&gt;No PSD je snaha o&amp;nbsp;continuous design. Grafický návrh by neměl končit
+dodáním dokonalého statického obrázku. Grafický návrh by měl být,
+stejně jako softwarový návrh, dělán postupně po jednotlivých featurách a
+iterativně uhlazován na základě zpětné vazby. Tohle, myslím, úzce souvisí
+s&amp;nbsp;dalším&amp;nbsp;bodem.&lt;/p&gt;
+
+&lt;h3 id=&quot;toc-ziva-prirucka-css-stylu&quot;&gt;Živá příručka CSS stylů&lt;/h3&gt;
+
+&lt;p&gt;Jistě znáte Bootstrap nebo třeba Semantic UI. Jejich dokumentace je
+dokonalou ukázkou tohoto konceptu. Všechny prvky, které máte ve vaší webové
+aplikaci, by měly být nározně vyvedeny v&amp;nbsp;jednom dokumentu. Samozřejmě, by
+to němělo být PSD, ale HTML. Udržování takové příručky může vypadat
+jako lehký overhead, ale máte spustitelnou dokumentaci vašeho grafického a
+interakčního návrhu, která je prevencí nekonzistentnímu vzhledu a
+programátorských divočinek v&amp;nbsp;UI.&lt;/p&gt;
+
+&lt;h3 id=&quot;toc-clojure&quot;&gt;Clojure&lt;/h3&gt;
+
+&lt;p&gt;Tento radar je prošpikován nejrůznějšími nástroji a knihovnami
+z&amp;nbsp;Clojure. Jmenujme třeba Om, Datomic, core.async, Cursive, Gorilla REPL atd.
+Clojure je big thing. Ne v&amp;nbsp;tom, kolik lidí ji už aktivně používá (více
+něž 200&amp;nbsp;&amp;ndash; to je číslo o&amp;nbsp;kterém uvažoval Rich Hickey, když s&amp;nbsp;ní
+přišel na svět), ale v&amp;nbsp;tom jak moc ulehčuje práci. Z&amp;nbsp;osobní zkušenosti
+z&amp;nbsp;několika projektů můžu říct jen: V&amp;nbsp;Clojure se neperete s&amp;nbsp;problémy,
+které na vás připravuje jazyk nebo knihovna, ale s&amp;nbsp;těmi opravdovými,
+které potřebujete&amp;nbsp;řešit.&lt;/p&gt;
+
+&lt;p&gt;Je to skoro rok a půl, co jsem se rozhodl, že se Clojure podívám na
+zoubek. Strávil jsem půl roku intenzivním učením a byla to jedna
+z&amp;nbsp;nejlepších investic v&amp;nbsp;mé dosavadní kariéře. Pokud máte zájem taky se
+seznámit, tak budeme mít na konci ledna takovou &lt;a
+href=&quot;https://plus.google.com/u/0/events/c3754trnb0436i7f1r60j412kv8&quot;&gt;seznamovací
+seanci v&amp;nbsp;Hradci Králové&lt;/p&gt;. Určitě přijďte.&lt;/p&gt;
+
+&lt;h3 id=&quot;toc-react-js&quot;&gt;React.js&lt;/h3&gt;
+
+&lt;p&gt;Je zajímavé, že v&amp;nbsp;radaru je přijetí Reactu o&amp;nbsp;dost vlažnější, než
+je tomu u&amp;nbsp;Omu, který na něm staví. Po osobních zkušenostech s&amp;nbsp;oběmi
+technologiemi to ale celkem chápu. React je super, o&amp;nbsp;tom žádná, ale je to
+mnohem větší boj než s&amp;nbsp;Omem, ikdyž použijete třeba Immutable-js a Kefir,
+pořád je to JavaScript. Je to zlehka prosekaná, ale stále trnitá cesta.
+Nemám žádné iluze, že by tvorba UI mohla být snadná&amp;nbsp;&amp;ndash; to nikdy nebude,
+protože je to těžký problém&amp;nbsp;&amp;ndash; ale zkusil jsem si, že to jde bez toho
+trní. Jen je to pořád hodně do&amp;nbsp;kopce.&lt;/p&gt;
+
+&lt;h3 id=&quot;toc-synchronizace-local-storage&quot;&gt;Synchronizace local storage&lt;/h3&gt;
+
+&lt;p&gt;Když děláte SPA nebo jiné browser heavy aplikace, je potřeba pracovat
+s&amp;nbsp;velkým množstvím dat. Dělat kvůli každé operaci roundtrip na server je
+trochu velký luxus. Obvzlášť, když dnes musíme počítat s&amp;nbsp;mobilními
+klienty, které nemají stálé a kvalitní připojení. Data potřebujeme
+držet na klientu. Ať už je držíme v &lt;code&gt;localstorage&lt;/code&gt; a nebo v
+&lt;code&gt;IndexedDB&lt;/code&gt;, potřebujeme tato data občas synchronizovat.
+Mobile-first musí dnes počítat s&amp;nbsp;Offline-first přístupem.&lt;/p&gt;
+
+&lt;p&gt;V&amp;nbsp;ClojureScriptu můžeme snadno využít atomů, které pomocí watches &lt;a
+href=&quot;https://github.com/alandipert/storage-atom&quot;&gt;persistujeme v&amp;nbsp;lokálním
+uložišti&lt;/a&gt; a jednou za čas pošleme změny na server&amp;nbsp;&amp;ndash; když máme
+připojení.&lt;/p&gt;
+
+&lt;h3 id=&quot;toc-generatory-statickych-webu&quot;&gt;Generátory statických webů&lt;/h3&gt;
+
+&lt;p&gt;Z&amp;nbsp;nějakýho důvodu se nám vrací technika z&amp;nbsp;90.&amp;nbsp;let a to staticky
+vygenerované weby. Někde to jistě dává smysl. Vzhledem k&amp;nbsp;tomu, že jsme za
+poslední rok udělal dva dynamický weby, který vlastně nemaj žádnou DB,
+budu o&amp;nbsp;tom víc přemýšlet.&amp;nbsp;:)&lt;/p&gt;
+    </html>
+    <raw xml:space="preserve">
+Na sklonku roku 2014 Thoughtworks vydávají svůj tradiční technologický radar. Rád bych z něj vypíchnul některé zajímavé body.
+
+## NoPSD
+
+NoPSD je snaha o continuous design. Grafický návrh by neměl končit dodáním dokonalého statického obrázku. Grafický návrh by měl být, stejně jako softwarový návrh, dělán postupně po jednotlivých featurách a iterativně uhlazován na základě zpětné vazby. Tohle, myslím, úzce souvisí s dalším bodem.
+
+## Živá příručka CSS stylů
+
+Jistě znáte Bootstrap nebo třeba Semantic UI. Jejich dokumentace je dokonalou ukázkou tohoto konceptu. Všechny prvky, které máte ve vaší webové aplikaci, by měly být nározně vyvedeny v jednom dokumentu. Samozřejmě, by to němělo být PSD, ale HTML. Udržování takové příručky může vypadat jako lehký overhead, ale máte spustitelnou dokumentaci vašeho grafického a interakčního návrhu, která je prevencí nekonzistentnímu vzhledu a programátorských divočinek v UI.
+
+## Clojure
+
+Tento radar je prošpikován nejrůznějšími nástroji a knihovnami z Clojure. Jmenujme třeba Om, Datomic, core.async, Cursive, Gorilla REPL atd. Clojure je big thing. Ne v tom, kolik lidí ji už aktivně používá (více něž 200 - to je číslo o kterém uvažoval Rich Hickey, když s ní přišel na svět), ale v tom jak moc ulehčuje práci. Z osobní zkušenosti z několika projektů můžu říct jen: V Clojure se neperete s problémy, které na vás připravuje jazyk nebo knihovna, ale s těmi opravdovými, které potřebujete řešit.
+
+Je to skoro rok a půl, co jsem se rozhodl, že se Clojure podívám na zoubek. Strávil jsem půl roku intenzivním učením a byla to jedna z nejlepších investic v mé dosavadní kariéře. Pokud máte zájem taky se seznámit, tak budeme mít na konci ledna takovou "seznamovací seanci v Hradci Králové":[https://plus.google.com/u/0/events/c3754trnb0436i7f1r60j412kv8]. Určitě přijďte.
+
+## React.js
+
+Je zajímavé, že v radaru je přijetí Reactu o dost vlažnější, než je tomu u Omu, který na něm staví. Po osobních zkušenostech s oběmi technologiemi to ale celkem chápu. React je super, o tom žádná, ale je to mnohem větší boj než s Omem, ikdyž použijete třeba Immutable-js a Kefir, pořád je to JavaScript. Je to zlehka prosekaná, ale stále trnitá cesta. Nemám žádné iluze, že by tvorba UI mohla být snadná - to nikdy nebude, protože je to těžký problém -  ale zkusil jsem si, že to jde bez toho trní. Jen je to pořád hodně do kopce.
+
+## Synchronizace local storage
+
+Když děláte SPA nebo jiné browser heavy aplikace, je potřeba pracovat s velkým množstvím dat. Dělat kvůli každé operaci roundtrip na server je trochu velký luxus. Obvzlášť, když dnes musíme počítat s mobilními klienty, které nemají stálé a kvalitní připojení. Data potřebujeme držet na klientu. Ať už je držíme v `localstorage` a nebo v `IndexedDB`, potřebujeme tato data občas synchronizovat. Mobile-first musí dnes počítat s Offline-first přístupem.
+
+V ClojureScriptu můžeme snadno využít atomů, které pomocí watches [persistujeme v lokálním uložišti](https://github.com/alandipert/storage-atom) a jednou za čas pošleme změny na server - když máme připojení.
+
+## Generátory statických webů
+
+Z nějakýho důvodu se nám vrací technika z 90. let a to staticky vygenerované weby. Někde to jistě dává smysl. Vzhledem k tomu, že jsme za poslední rok udělal dva dynamický weby, který vlastně nemaj žádnou DB, budu o tom víc přemýšlet. :)
+
+    </raw>
+    <author>Aleš Roubíček</author>
+    <published>2014-12-19T16:45:00.663</published>
+    <url>technologicky-radar-zima-2014</url>
+    <category>Moje práce</category>
+    <keywords></keywords>
+    <tags>clojure, webdesign</tags>
+    <is-published>1</is-published>
+    <edited>2014-12-19T16:45:00.663</edited>
   </article>
 </articles>
