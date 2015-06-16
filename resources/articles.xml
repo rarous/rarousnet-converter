@@ -41457,7 +41457,7 @@ radar. Rád bych z&amp;nbsp;něj vypíchnul některé zajímavé&amp;nbsp;body.&
 
 &lt;h3 id=&quot;toc-nopsd&quot;&gt;NoPSD&lt;/h3&gt;
 
-&lt;p&gt;No PSD je snaha o&amp;nbsp;continuous design. Grafický návrh by neměl končit
+&lt;p&gt;NoPSD je snaha o&amp;nbsp;continuous design. Grafický návrh by neměl končit
 dodáním dokonalého statického obrázku. Grafický návrh by měl být,
 stejně jako softwarový návrh, dělán postupně po jednotlivých featurách a
 iterativně uhlazován na základě zpětné vazby. Tohle, myslím, úzce souvisí
@@ -41489,7 +41489,7 @@ zoubek. Strávil jsem půl roku intenzivním učením a byla to jedna
 z&amp;nbsp;nejlepších investic v&amp;nbsp;mé dosavadní kariéře. Pokud máte zájem taky se
 seznámit, tak budeme mít na konci ledna takovou &lt;a
 href=&quot;https://plus.google.com/u/0/events/c3754trnb0436i7f1r60j412kv8&quot;&gt;seznamovací
-seanci v&amp;nbsp;Hradci Králové&lt;/p&gt;. Určitě přijďte.&lt;/p&gt;
+seanci v&amp;nbsp;Hradci Králové&lt;/a&gt;. Určitě přijďte.&lt;/p&gt;
 
 &lt;h3 id=&quot;toc-react-js&quot;&gt;React.js&lt;/h3&gt;
 
@@ -41564,5 +41564,173 @@ Z nějakýho důvodu se nám vrací technika z 90. let a to staticky vygenerovan
     <tags>clojure, webdesign</tags>
     <is-published>1</is-published>
     <edited>2014-12-19T16:45:00.663</edited>
+  </article>
+  <article>
+    <id>463</id>
+    <title>Stránky z údolí duchů</title>
+    <description>Jeden tip jak zamezit neviditelným stránkám a nepříjmnému probliknutí textů, když používáme custom fonty.</description>
+    <html xml:space="preserve">
+&lt;p&gt;Sedíme takhle s&amp;nbsp;kolegy v&amp;nbsp;kavárně a chci jim ukázat portfolio jedno
+člověka, který by mohl případně rozšířit naše řady. Grafika, styly,
+všechno ok, jen tomu něco chybí… Po chvíli přemýšlení stránka
+problikne a objeví se&amp;nbsp;text!&lt;/p&gt;
+
+&lt;p&gt;Určitě jste to také zažili. Když se nad tím tak zamyslím, stává se
+mi to dost často. Trendem poslední doby jsou webové fonty a když je grafik
+co proto, tak je zkrátka použije, aby bylo vidět, že se vyzná. Nebozí
+kodéři pak sáhnou po některé ze služeb, která nabízí hostované webové
+fonty s&amp;nbsp;potřebnou licencí, nebo to prostě vygenerují a hostují
+si&amp;nbsp;sami.&lt;/p&gt;
+
+&lt;p&gt;Už když návrh převádíme do kódu, tak nás občasný výpadek
+připojení nebo zpoždění na připojení k&amp;nbsp;poskytovateli fontů začnou
+dopalovat a tak se uchýlíme k&amp;nbsp;tomu, že si font, se kterým pracujeme,
+nainstalujeme do systému a problém je vyřešen!&lt;/p&gt;
+
+&lt;p&gt;Za pár dní po nasazení, se někdo ozve, že se mu stránka nezobrazuje.
+Tak mu odpovíme, že “to není možný, mně všechno funguje jak má a
+nemůžu to nijak nasimulovat. Problém bude u&amp;nbsp;Vás!” A&amp;nbsp;problém je
+vyřešen. Návštěvník, si bude pamatovat, že tohle je ten web, co se
+nezobrazuje a už se asi nevrátí…&lt;/p&gt;
+
+&lt;h3 id=&quot;toc-vrahem-je-webdesigner&quot;&gt;Vrahem je webdesigner&lt;/h3&gt;
+
+&lt;p&gt;Žijeme v&amp;nbsp;době, kdy připojení k&amp;nbsp;internetu dosáhlo závratných
+rychlostí a tak moc neřešíme, co všechno stránka obsahuje a jak je to
+velký. Gzip se s&amp;nbsp;tím popere… Věci v&amp;nbsp;CDN se cachují… Všechno to
+vyřeší HTTP/2… Blbost!&lt;/p&gt;
+
+&lt;p&gt;Fonty s&amp;nbsp;našimi nabodeníčkymi a čtyřmi základními řezy mají jednotky
+megabajtů. Na mobilním připojení nebo na linkách mimo Prahu a
+šťastnější města to jsou desítky vteřin. Pro vaši návštěvnost
+možná smrtelné.&lt;/p&gt;
+
+&lt;p&gt;Proč? Protože browser musí čekat, než se font načte, aby s&amp;nbsp;ním mohl
+vykreslit texty na stránce. Můžete mít třeba 10&amp;nbsp;fallback fontů
+v&amp;nbsp;deklaraci, ale pokud font zavádíte ve stylech pomocí
+&lt;code&gt;@font-face&lt;/code&gt;, je známý a browser čeká na jeho natažení.&lt;/p&gt;
+
+&lt;blockquote&gt;
+    &lt;p&gt;“To máme přestat používat fonty?”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Tak určitě ne. Stačí je jen používat chytře.&lt;/p&gt;
+
+&lt;h3 id=&quot;toc-zachrani-nas-webfont-loader&quot;&gt;Zachrání nás Webfont Loader!&lt;/h3&gt;
+
+&lt;p&gt;Jestli existuje nějaká firma, posedlá rychlostí a efektivností je to asi
+Google, kde tento problém už vyřešili. Ve spolupráci s&amp;nbsp;dalším
+poskytovatelem webových fontů&amp;nbsp;&amp;ndash; Typekitem&amp;nbsp;&amp;ndash; vytvořili &lt;a
+href=&quot;https://github.com/typekit/webfontloader&quot;&gt;Webfont Loader&lt;/a&gt;. Je to
+script, který slouží k&amp;nbsp;zavedení webového fontu do stránky tak, aby
+stránka byla čitelná od chvíle, kdy má browser nějaký text načtený.&lt;/p&gt;
+
+&lt;p&gt;Do hlavičky stránky se vkládá takto:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-markup&quot;&gt;&amp;lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script&amp;gt;
+  WebFont.load({
+    google: {
+      families: [&#39;Droid Sans&#39;, &#39;Droid Serif&#39;]
+    }
+  });
+&amp;lt;/script&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Samotné načtení fontu pomocí Webfont Loaderu vám ale nezaručí
+kýžený výsledek! Musíme ještě upravit stylopis tak, aby reflektoval, že
+se nějaké styly načítají a použil fallback. Ještě lépe: použijeme
+progressive enhancement! To znamená, že nejprve stránku nastylujeme
+použitelně s&amp;nbsp;bezpečnými fonty. Pak pomocí speciální třídy, kterou
+Webfont Loader přidá po úspěšném načtení fontů, dosáhneme kýženého
+typografického efektu.&lt;/p&gt;
+
+&lt;p&gt;Ta třída se jmenuje &lt;code&gt;wf-active&lt;/code&gt; a WFL ji dává na rootový
+element&amp;nbsp;&amp;ndash; &lt;code&gt;html&lt;/code&gt;. To nám umožní psát styly
+podobné&amp;nbsp;těmto:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-css&quot;&gt;body { font: 1em serif }
+.wf-active body { font-family: &#39;Droid Serif&#39; }&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Webfont Loader umožňuje i&amp;nbsp;granulárnější práci a generuje třídy pro
+jednotlivé řezy a různé stavy průběhu načítání, takže se výsledek
+dá slušně poladit. Projděte si dokumentaci, není moc dlouhá, ale obsahuje
+spoustu užitečných informací.&lt;/p&gt;
+
+&lt;p&gt;Mějte na paměti, že je potřeba fallback poladit, aby byly hlavně
+šířky písmen velmi blízké požadovanému fontu, protože jinak bude muset
+browser přepočítávat tok textu a velikosti boxů a to také není moc
+pěkný&amp;nbsp;efekt.&lt;/p&gt;
+
+&lt;p&gt;Na ladění se vám jistě bude hodit, když si vypnete lokálně
+nainstalované fonty a v&amp;nbsp;browseru použijete simulací pomalé linky.
+Případně stačí na &lt;code&gt;html&lt;/code&gt; elementu zapínat/vypínat
+související třídu. Však vy už si poradíte…&lt;/p&gt;
+
+&lt;p&gt;Tak, proč vaše stránky ještě problikávají a nejdou půl minuty
+přečíst?&lt;/p&gt;
+    </html>
+    <raw xml:space="preserve">
+Sedíme takhle s kolegy v kavárně a chci jim ukázat portfolio jedno člověka, který by mohl případně rozšířit naše řady. Grafika, styly, všechno ok, jen tomu něco chybí... Po chvíli přemýšlení stránka problikne a objeví se text!
+
+Určitě jste to také zažili. Když se nad tím tak zamyslím, stává se mi to dost často. Trendem poslední doby jsou webové fonty a když je grafik co proto, tak je zkrátka použije, aby bylo vidět, že se vyzná. Nebozí kodéři pak sáhnou po některé ze služeb, která nabízí hostované webové fonty s potřebnou licencí, nebo to prostě vygenerují a hostují si sami.
+
+Už když návrh převádíme do kódu, tak nás občasný výpadek připojení nebo zpoždění na připojení k poskytovateli fontů začnou dopalovat a tak se uchýlíme k tomu, že si font, se kterým pracujeme, nainstalujeme do systému a problém je vyřešen!
+
+Za pár dní po nasazení, se někdo ozve, že se mu stránka nezobrazuje. Tak mu odpovíme, že “to není možný, mně všechno funguje jak má a nemůžu to nijak nasimulovat. Problém bude u Vás!” A problém je vyřešen. Návštěvník, si bude pamatovat, že tohle je ten web, co se nezobrazuje a už se asi nevrátí...
+
+## Vrahem je webdesigner
+
+Žijeme v době, kdy připojení k internetu dosáhlo závratných rychlostí a tak moc neřešíme, co všechno stránka obsahuje a jak je to velký. Gzip se s tím popere... Věci v CDN se cachují... Všechno to vyřeší HTTP/2... Blbost!
+
+Fonty s našimi nabodeníčkymi a čtyřmi základními řezy mají jednotky megabajtů. Na mobilním připojení nebo na linkách mimo Prahu a šťastnější města to jsou desítky vteřin. Pro vaši návštěvnost možná smrtelné.
+
+Proč? Protože browser musí čekat, než se font načte, aby s ním mohl vykreslit texty na stránce. Můžete mít třeba 10 fallback fontů v deklaraci, ale pokud font zavádíte ve stylech pomocí `@font-face`, je známý a browser čeká na jeho natažení.
+
+> “To máme přestat používat fonty?”
+
+Tak určitě ne. Stačí je jen používat chytře.
+
+## Zachrání nás Webfont Loader!
+
+Jestli existuje nějaká firma, posedlá rychlostí a efektivností je to asi Google, kde tento problém už vyřešili. Ve spolupráci s dalším poskytovatelem webových fontů - Typekitem - vytvořili [Webfont Loader](https://github.com/typekit/webfontloader). Je to script, který slouží k zavedení webového fontu do stránky tak, aby stránka byla čitelná od chvíle, kdy má browser nějaký text načtený.
+
+Do hlavičky stránky se vkládá takto:
+
+/--code markup
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Droid Sans', 'Droid Serif']
+    }
+  });
+</script>
+\---code
+
+Samotné načtení fontu pomocí Webfont Loaderu vám ale nezaručí kýžený výsledek! Musíme ještě upravit stylopis tak, aby reflektoval, že se nějaké styly načítají a použil fallback. Ještě lépe: použijeme progressive enhancement! To znamená, že nejprve stránku nastylujeme použitelně s bezpečnými fonty. Pak pomocí speciální třídy, kterou Webfont Loader přidá po úspěšném načtení fontů, dosáhneme kýženého typografického efektu.
+
+Ta třída se jmenuje `wf-active` a WFL ji dává na rootový element - `html`. To nám umožní psát styly podobné těmto:
+
+/---code css
+body { font: 1em serif }
+.wf-active body { font-family: 'Droid Serif' }
+\---code
+
+Webfont Loader umožňuje i granulárnější práci a generuje třídy pro jednotlivé řezy a různé stavy průběhu načítání, takže se výsledek dá slušně poladit. Projděte si dokumentaci, není moc dlouhá, ale obsahuje spoustu užitečných informací.
+
+Mějte na paměti, že je potřeba fallback poladit, aby byly hlavně šířky písmen velmi blízké požadovanému fontu, protože jinak bude muset browser přepočítávat tok textu a velikosti boxů a to také není moc pěkný efekt.
+
+Na ladění se vám jistě bude hodit, když si vypnete lokálně nainstalované fonty a v browseru použijete simulací pomalé linky. Případně stačí na `html` elementu zapínat/vypínat související třídu. Však vy už si poradíte...
+
+Tak, proč vaše stránky ještě problikávají a nejdou půl minuty přečíst?
+    </raw>
+    <author>Aleš Roubíček</author>
+    <published>2015-06-16T18:15:00.663</published>
+    <url>stranky-z-udoli-duchu</url>
+    <category>Webdesign</category>
+    <keywords></keywords>
+    <tags>webdesign</tags>
+    <is-published>1</is-published>
+    <edited>2015-06-16T18:15:00.663</edited>
   </article>
 </articles>
