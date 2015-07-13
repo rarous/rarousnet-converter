@@ -41638,7 +41638,7 @@ stránka byla čitelná od chvíle, kdy má browser nějaký text načtený.&lt;
 
 &lt;p&gt;Samotné načtení fontu pomocí Webfont Loaderu vám ale nezaručí
 kýžený výsledek! Musíme ještě upravit stylopis tak, aby reflektoval, že
-se nějaké styly načítají a použil fallback. Ještě lépe: použijeme
+se nějaké fonty načítají a použil fallback. Ještě lépe: použijeme
 progressive enhancement! To znamená, že nejprve stránku nastylujeme
 použitelně s&amp;nbsp;bezpečnými fonty. Pak pomocí speciální třídy, kterou
 Webfont Loader přidá po úspěšném načtení fontů, dosáhneme kýženého
@@ -41707,7 +41707,7 @@ Do hlavičky stránky se vkládá takto:
 </script>
 \---code
 
-Samotné načtení fontu pomocí Webfont Loaderu vám ale nezaručí kýžený výsledek! Musíme ještě upravit stylopis tak, aby reflektoval, že se nějaké styly načítají a použil fallback. Ještě lépe: použijeme progressive enhancement! To znamená, že nejprve stránku nastylujeme použitelně s bezpečnými fonty. Pak pomocí speciální třídy, kterou Webfont Loader přidá po úspěšném načtení fontů, dosáhneme kýženého typografického efektu.
+Samotné načtení fontu pomocí Webfont Loaderu vám ale nezaručí kýžený výsledek! Musíme ještě upravit stylopis tak, aby reflektoval, že se nějaké fonty načítají a použil fallback. Ještě lépe: použijeme progressive enhancement! To znamená, že nejprve stránku nastylujeme použitelně s bezpečnými fonty. Pak pomocí speciální třídy, kterou Webfont Loader přidá po úspěšném načtení fontů, dosáhneme kýženého typografického efektu.
 
 Ta třída se jmenuje `wf-active` a WFL ji dává na rootový element - `html`. To nám umožní psát styly podobné těmto:
 
@@ -41732,5 +41732,88 @@ Tak, proč vaše stránky ještě problikávají a nejdou půl minuty přečíst
     <tags>webdesign</tags>
     <is-published>1</is-published>
     <edited>2015-06-16T18:15:00.663</edited>
+  </article>
+  <article>
+    <id>464</id>
+    <title>Strasti a pasti HTML5</title>
+    <description>Ačkoliv je HTML5 dnešní realitou, tak není vůbec růžová. Jak se vyhnout zbytečným problémům?</description>
+    <html xml:space="preserve">
+&lt;p&gt;Poprvé jsem o&amp;nbsp;HTML5 slyšel víc někdy v&amp;nbsp;roce 2008&amp;nbsp;na konferenci &lt;a
+href=&quot;http://a.met.cz/webcamp/html5/&quot;&gt;WebCamp od Martina Hassmana&lt;/a&gt;. Tenkrát
+mi to přišlo všechno strašně divný. Vždyť jedinou správnou cestou mělo
+být XHTML a mělo sloužit k&amp;nbsp;popisu dokumentů, ne aplikací. Ale trh
+šel&amp;nbsp;jinam.&lt;/p&gt;
+
+&lt;p&gt;Dneska je HTML5 realitou a je výchozím formátem pro moje aktivity už
+5&amp;nbsp;let. A&amp;nbsp;nejen pro moje. HTML5 je de facto mainstream. Přesto může pro
+mnohé znamenat spoustu zapeklitých situací, protože ne všichni
+implementují všechno a stejně.&lt;/p&gt;
+
+&lt;h3 id=&quot;toc-jak-problemum-predejit&quot;&gt;Jak problémům předejít?&lt;/h3&gt;
+
+&lt;p&gt;První otázka, která vám přijde na mysl je “&lt;a
+href=&quot;http://caniuse.com/&quot;&gt;co můžu použít&lt;/a&gt;?”&lt;/p&gt;
+
+&lt;p&gt;Pak zjistíme, že někde nějaká featura chybí úplně, jinde je
+nedodělaná a jinde ani netušili, že nějaké HTML5 vůbec bude. A&amp;nbsp;všechno
+to má nezanedbatelný podíl na&amp;nbsp;trhu.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Ono vůbec s&amp;nbsp;těmi podíly je to takový ošemetný. Web má být
+přístupný pro všechny, ne jen pro vámi definovanou skupinu vyvolených,
+abyste si ušetřili práci. Ale o&amp;nbsp;tom&amp;nbsp;jindy…&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Největším problémem je asi podpora v&amp;nbsp;Internet Explorerech. Stále
+nemrtvé IE8 vůbec nezná nové sémantické značky a tak nejdou ani
+nastylovat. Každá HTML5 stránka musí obsahovat &lt;a
+href=&quot;https://github.com/afarkas/html5shiv&quot;&gt;HTML5 Shiv&lt;/a&gt; nebo jinou knihovnu,
+která ho používá.&lt;/p&gt;
+
+&lt;p&gt;Možná vás to překvapí, ale ani některé nejmodernější prohlížeče
+nerenderují všechno správně. Abyste se vyhnuli nepříjemným překvapením,
+doporučuji projít si &lt;a
+href=&quot;https://necolas.github.io/normalize.css/&quot;&gt;Normalize.css&lt;/a&gt; a buď ho
+rovnou použít celý, nebo integrovat vybrané moduly. Všechny deklarace jsou
+hezky zdokumentované.&lt;/p&gt;
+
+&lt;p&gt;Tím máme základní sadu problémů vyřešenou a můžeme se začít
+trápit &lt;a href=&quot;http://caniuse.com/#cats=JS%20API&quot;&gt;s&amp;nbsp;podporou APIs&lt;/a&gt; a &lt;a
+href=&quot;https://kangax.github.io/compat-table/es6/&quot;&gt;jednotlivých jazykových
+featur&lt;/a&gt;. S&amp;nbsp;tím nám hodně pomůže &lt;a
+href=&quot;https://babeljs.io/&quot;&gt;Babel.js&lt;/a&gt; a &lt;a
+href=&quot;http://caniuse.com/#cats=JS%20API&quot;&gt;spousta polyfillů&lt;/a&gt;. Ale pozor ať
+vám díky edge featurám implementovaným v&amp;nbsp;JS nenabobtná výsledek do
+obludných rozměrů a performance killeru.&lt;/p&gt;
+
+&lt;p&gt;Užívejte jako léky nebo koření.&lt;/p&gt;
+    </html>
+    <raw xml:space="preserve">
+Poprvé jsem o HTML5 slyšel víc někdy v roce 2008 na konferenci [WebCamp od Martina Hassmana](http://a.met.cz/webcamp/html5/). Tenkrát mi to přišlo všechno strašně divný. Vždyť jedinou správnou cestou mělo být XHTML a mělo sloužit k popisu dokumentů, ne aplikací. Ale trh šel jinam.
+
+Dneska je HTML5 realitou a je výchozím formátem pro moje aktivity už 5 let. A nejen pro moje. HTML5 je de facto mainstream. Přesto může pro mnohé znamenat spoustu zapeklitých situací, protože ne všichni implementují všechno a stejně.
+
+## Jak problémům předejít?
+
+První otázka, která vám přijde na mysl je "[co můžu použít](http://caniuse.com/)?"
+
+Pak zjistíme, že někde nějaká featura chybí úplně, jinde je nedodělaná a  jinde ani netušili, že nějaké HTML5 vůbec bude. A všechno to má nezanedbatelný podíl na trhu.
+
+*Ono vůbec s těmi podíly je to takový ošemetný. Web má být přístupný pro všechny, ne jen pro vámi definovanou skupinu vyvolených, abyste si ušetřili práci. Ale o tom jindy...*
+
+Největším problémem je asi podpora v Internet Explorerech. Stále nemrtvé IE8 vůbec nezná nové sémantické značky a tak nejdou ani nastylovat. Každá HTML5 stránka musí obsahovat [HTML5 Shiv](https://github.com/afarkas/html5shiv) nebo jinou knihovnu, která ho používá.
+
+Možná vás to překvapí, ale ani některé nejmodernější prohlížeče nerenderují všechno správně. Abyste se vyhnuli nepříjemným překvapením, doporučuji projít si [Normalize.css](https://necolas.github.io/normalize.css/) a buď ho rovnou použít celý, nebo integrovat vybrané moduly. Všechny deklarace jsou hezky zdokumentované.
+
+Tím máme základní sadu problémů vyřešenou a můžeme se začít trápit [s podporou APIs](http://caniuse.com/#cats=JS%20API) a [jednotlivých jazykových featur](https://kangax.github.io/compat-table/es6/). S tím nám hodně pomůže [Babel.js](https://babeljs.io/) a [spousta polyfillů](http://caniuse.com/#cats=JS%20API). Ale pozor ať vám díky edge featurám implementovaným v JS nenabobtná výsledek do obludných rozměrů a performance killeru.
+
+Užívejte jako léky nebo koření.
+    </raw>
+    <author>Aleš Roubíček</author>
+    <published>2015-07-13T10:05:00.663</published>
+    <url>strasti-a-pasti-html5</url>
+    <category>Webdesign</category>
+    <keywords></keywords>
+    <tags>webdesign</tags>
+    <is-published>1</is-published>
+    <edited>2015-07-13T10:05:00.663</edited>
   </article>
 </articles>
