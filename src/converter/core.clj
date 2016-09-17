@@ -1,22 +1,24 @@
 (ns converter.core
-  (:require [clj-time.core :as t]
-            [clj-time.coerce :refer [from-string to-date]]
-            [clojure.core.reducers :as r]
-            [clojure.pprint]
-            [clojure.java.io :as io]
-            [clojure.zip :as zip]
-            [clojure.data.xml :as xml]
-            [clojure.data.zip :as zd]
-            [clojure.data.zip.xml :as zf]
-            [clojure.string :as str]
-            [cognitect.transit :as transit])
-  (:import [java.text Normalizer Normalizer$Form]))
+  (:require
+    [clj-time.coerce :refer [from-string to-date]]
+    [clojure.pprint]
+    [clojure.java.io :as io]
+    [clojure.zip :as zip]
+    [clojure.data.xml :as xml]
+    [clojure.data.zip :as zd]
+    [clojure.data.zip.xml :as zf]
+    [clojure.string :as string]
+    [cognitect.transit :as transit])
+  (:import
+    (java.text Normalizer Normalizer$Form)
+    (org.joda.time DateTime)))
 
 (defn remove-diacritics
   "Remove diacritical marks from the string `s`, E.g., 'żółw' is transformed
   to 'zolw'."
   [^String s]
-  (.replaceAll (Normalizer/normalize s Normalizer$Form/NFD) "\\p{InCombiningDiacriticalMarks}+" ""))
+  (let [normalized (Normalizer/normalize s Normalizer$Form/NFD)]
+    (.replaceAll normalized "\\p{InCombiningDiacriticalMarks}+" "")))
 
 (defn- get-root [^String xml-string]
   (some-> xml-string
@@ -24,14 +26,15 @@
           zip/xml-zip))
 
 (defn- urlize [^String s]
-  (let [urlized (-> s remove-diacritics str/lower-case (str/replace #"[\s|\.]" "-"))]
+  (let [urlized (-> s remove-diacritics string/lower-case (string/replace #"[\s|\.]" "-"))]
     (str urlized ".aspx")))
 
 (defn- tags->vector [article]
   (let [tags (some-> (zf/xml1-> article :tags zf/text)
-                     (str/replace "#x20;" "")
-                     (str/split #"\s"))]
-    (filterv (comp not empty?) (or tags []))))
+                     (string/replace "#x20;" "")
+                     (string/split #"\s"))
+        tags (or tags [])]
+    (filterv seq tags)))
 
 (defn- article->detail-map [article]
   {:id (read-string (zf/xml1-> article :id zf/text))
@@ -51,15 +54,22 @@
 (defn- index-by-url [{:keys [id url] :as article}]
   [(keyword (str id "-" url ".aspx")) article])
 
+(def ^:private blog-rubrics
+  (comp
+    (remove #(= (:category %) "Reference"))
+    (remove #(= (:category %) "Projekty"))
+    (filter :is-published)))
+
+(def ^:private articles-by-url
+  (comp
+    (map article->detail-map)
+    blog-rubrics
+    (map #(assoc % :category-url (urlize (:category %))))
+    (map index-by-url)))
+
 (defn- articles-result [root]
   (->> (zf/xml-> root :article)
-       (r/map article->detail-map)
-       (r/filter #(not= (:category %) "Reference"))
-       (r/filter #(not= (:category %) "Projekty"))
-       (r/filter :is-published)
-       (r/map #(assoc % :category-url (urlize (:category %))))
-       (r/map index-by-url)
-       (into {})))
+       (into {} articles-by-url)))
 
 (defn- article->rubrics-map [article]
   {:id (read-string (zf/xml1-> article :id zf/text))
@@ -69,35 +79,45 @@
    :category (zf/xml1-> article :category zf/text)
    :is-published (= 1 (read-string (zf/xml1-> article :is-published zf/text)))})
 
+(def ^:private articles-for-rubric
+  (comp
+    (map article->rubrics-map)
+    blog-rubrics))
+
 (defn- rubrics-result [root]
   (->> (zf/xml-> root :article)
-       (r/map article->rubrics-map)
-       (r/filter #(not= (:category %) "Reference"))
-       (r/filter #(not= (:category %) "Projekty"))
-       (r/filter :is-published)
-       (into [])
+       (into [] articles-for-rubric)
        (sort-by :id >)
        (group-by (comp keyword urlize :category))))
 
 (def joda-time-writer
   (transit/write-handler
-   (constantly "m")
-   #(-> % to-date .getTime)
-   #(-> % to-date .getTime .toString)))
+    (constantly "m")
+    #(-> % to-date .getTime)
+    #(-> % to-date .getTime .toString)))
 
-(defn trans-write [data file]
+(defn write [data file format]
   (with-open [out (io/output-stream file)]
-     (transit/write (transit/writer out :msgpack {:handlers {org.joda.time.DateTime joda-time-writer}}) data)))
+    (let [opts {:handlers {DateTime joda-time-writer}}
+          writer (transit/writer out format opts)]
+      (transit/write writer data))))
 
-(defn trans [root]
+(defn trans-json [root]
   (println "Processing articles")
-  (time (trans-write (articles-result root) "out/articles.mp"))
+  (time (write (articles-result root) "out/articles.json" :json-verbose))
   (println "Processing categories")
-  (time (trans-write (rubrics-result root) "out/rubrics.mp")))
+  (time (write (rubrics-result root) "out/rubrics.json" :json-verbose)))
+
+
+(defn trans-mp [root]
+  (println "Processing articles")
+  (time (write (articles-result root) "out/articles.mp" :msgpack))
+  (println "Processing categories")
+  (time (write (rubrics-result root) "out/rubrics.mp" :msgpack)))
 
 (defn -main [& args]
   (let [articles (slurp (io/resource "articles.xml"))
         root (get-root articles)]
-    (trans root)))
+    (trans-json root)))
 
 ;; (-main)
